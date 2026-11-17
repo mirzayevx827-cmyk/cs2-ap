@@ -8,7 +8,7 @@
     <style>
         body { background: #17212b; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
         .card { background: #242f3d; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
-        .btn { background: #2ea6ff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; width: 100%; font-weight: bold; }
+        .btn { background: #2ea6ff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; width: 100%; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -16,26 +16,27 @@
     <div class="card">
         <h3>🥉 Armeiskiy Keys</h3>
         <p>Narxi: 1 000 tanga</p>
-        <button class="btn" onclick="sendAction('📦 Keyslar')">Keysni ochish</button>
+        <button class="btn" onclick="openBot('cases')">Keysni ochish</button>
     </div>
     <div class="card">
         <h3>🛒 Skinlar Magazini</h3>
         <p>500 tangadan 2 000 000 tangagacha</p>
-        <button class="btn" onclick="sendAction('🛒 Magazin')">Magazinga o'tish</button>
+        <button class="btn" onclick="openBot('shop')">Magazinga o'tish</button>
     </div>
     <div class="card">
         <h3>🎁 Kunlik Bonus</h3>
         <p>Har kuni +150 tanga oling</p>
-        <button class="btn" onclick="sendAction('🎁 Kunlik bonus')">Bonusni olish</button>
+        <button class="btn" onclick="openBot('bonus')">Bonusni olish</button>
     </div>
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
-        function sendAction(text) {
-            tg.sendData(text);
+        function openBot(cmd) {
+            tg.openTelegramLink('https://t.me' + cmd);
             tg.close();
         }
     </script>
 </body>
 </html>
+
 
