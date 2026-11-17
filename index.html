@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Skinlar</title>
+    <script src="https://telegram.org"></script>
+    <style>
+        body { background: #17212b; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        .card { background: #242f3d; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
+        .btn { background: #2ea6ff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; width: 100%; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>🔥 CS2 Skinlar Ilovasi</h2>
+    <div class="card">
+        <h3>🥉 Armeiskiy Keys</h3>
+        <p>Narxi: 1 000 tanga</p>
+        <button class="btn" onclick="sendAction('📦 Keyslar')">Keysni ochish</button>
+    </div>
+    <div class="card">
+        <h3>🛒 Skinlar Magazini</h3>
+        <p>500 tangadan 2 000 000 tangagacha</p>
+        <button class="btn" onclick="sendAction('🛒 Magazin')">Magazinga o'tish</button>
+    </div>
+    <div class="card">
+        <h3>🎁 Kunlik Bonus</h3>
+        <p>Har kuni +150 tanga oling</p>
+        <button class="btn" onclick="sendAction('🎁 Kunlik bonus')">Bonusni olish</button>
+    </div>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        function sendAction(text) {
+            tg.sendData(text);
+            tg.close();
+        }
+    </script>
+</body>
+</html>
 
