@@ -8,7 +8,7 @@
     <style>
         body { background: #17212b; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
         .card { background: #242f3d; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
-        .btn { display: block; background: #2ea6ff; color: white; text-decoration: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; }
+        .btn { background: #2ea6ff; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; width: 100%; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -16,19 +16,26 @@
     <div class="card">
         <h3>🥉 Armeiskiy Keys</h3>
         <p>Narxi: 1 000 tanga</p>
-        <a class="btn" href="https://t.me">Keysni ochish</a>
+        <button class="btn" onclick="go('cases')">Keysni ochish</button>
     </div>
     <div class="card">
         <h3>🛒 Skinlar Magazini</h3>
         <p>500 tangadan 2 000 000 tangagacha</p>
-        <a class="btn" href="https://t.me">Magazinga o'tish</a>
+        <button class="btn" onclick="go('shop')">Magazinga o'tish</button>
     </div>
     <div class="card">
         <h3>🎁 Kunlik Bonus</h3>
         <p>Har kuni +150 tanga oling</p>
-        <a class="btn" href="https://t.me">Bonusni olish</a>
+        <button class="btn" onclick="go('bonus')">Bonusni olish</button>
     </div>
-    <script>window.Telegram.WebApp.expand();</script>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        function go(type) {
+            tg.openTelegramLink("https://t.me" + type);
+        }
+    </script>
 </body>
 </html>
 
