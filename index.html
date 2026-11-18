@@ -102,39 +102,39 @@ const sAK='<svg viewBox="0 0 100 50"><path d="M5 24h20l10-6h35l25 4v6H70l-8 10h-
 const sAWP='<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#eb4b4b"/></svg>';
 const sK='<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/></svg>';
 
-const allCases=[
-  {n:'📦 Fracture Case',p:500,s:[{n:'P250 | Sand',v:250,c:'r-blue',svg:sP},{n:'Glock | Bunsen',v:450,c:'r-purple',svg:sG},{n:'Desert Eagle',v:1200,c:'r-pink',svg:sP}]},
-  {n:'🥉 Recoil Case',p:1000,s:[{n:'USP-S | Ticket',v:500,c:'r-blue',svg:sP},{n:'AK-47 | Ice',v:1100,c:'r-pink',svg:sAK},{n:'AWP | Chromatic',v:2800,c:'r-red',svg:sAWP}]},
-  {n:'🥈 Revolution',p:2500,s:[{n:'MP9 | Feather',v:1200,c:'r-blue',svg:sG},{n:'M4A4 | Temukau',v:3000,c:'r-red',svg:sAK},{n:'★ Gloves',v:7500,c:'r-gold',svg:sK}]},
-  {n:'🔷 Dreams Case',p:5000,s:[{n:'MP7 | Abyssal',v:2500,c:'r-purple',svg:sG},{n:'AK-47 | Nightwish',v:6000,c:'r-red',svg:sAK},{n:'★ Butterfly',v:15000,c:'r-gold',svg:sK}]},
-  {n:'🔥 Kilowatt Case',p:10000,s:[{n:'Zeus | Olympus',v:5000,c:'r-pink',svg:sP},{n:'AK-47 | Inheritance',v:12000,c:'r-red',svg:sAK},{n:'★ Kukri Knife',v:28000,c:'r-gold',svg:sK}]},
-  {n:'🔮 Bravo Case',p:20000,s:[{n:'Deagle | Golden',v:10000,c:'r-pink',svg:sP},{n:'AK-47 | Fire Serpent',v:25000,c:'r-red',svg:sAK},{n:'★ Karambit Fade',v:55000,c:'r-gold',svg:sK}]},
-  {n:'👑 Cobblestone',p:50000,s:[{n:'M4A1-S | Knight',v:25000,c:'r-pink',svg:sAK},{n:'AWP | Dragon Lore',v:65000,c:'r-red',svg:sAWP},{n:'★ M9 Bayonet',v:130000,c:'r-gold',svg:sK}]},
-  {n:'🔪 Knife Case',p:100000,s:[{n:'★ Gut Knife',v:45000,c:'r-gold',svg:sK},{n:'★ Talon Doppler',v:110000,c:'r-gold',svg:sK},{n:'★ Karambit Lore',v:250000,c:'r-gold',svg:sK}]}
-];
+const allCases=new Array(
+  {ico:'📦',n:'Fracture Case',p:500,s:new Array({n:'P250 | Sand',v:250,c:'r-blue',svg:sP},{n:'Glock | Bunsen',v:450,c:'r-purple',svg:sG},{n:'Desert Eagle',v:1200,c:'r-pink',svg:sP})},
+  {ico:'🥉',n:'Recoil Case',p:1000,s:new Array({n:'USP-S | Ticket',v:500,c:'r-blue',svg:sP},{n:'AK-47 | Ice',v:1100,c:'r-pink',svg:sAK},{n:'AWP | Chromatic',v:2800,c:'r-red',svg:sAWP})},
+  {ico:'🥈',n:'Revolution',p:2500,s:new Array({n:'MP9 | Feather',v:1200,c:'r-blue',svg:sG},{n:'M4A4 | Temukau',v:3000,c:'r-red',svg:sAK},{n:'★ Gloves',v:7500,c:'r-gold',svg:sK})},
+  {ico:'🔷',n:'Dreams Case',p:5000,s:new Array({n:'MP7 | Abyssal',v:2500,c:'r-purple',svg:sG},{n:'AK-47 | Nightwish',v:6000,c:'r-red',svg:sAK},{n:'★ Butterfly',v:15000,c:'r-gold',svg:sK})},
+  {ico:'🔥',n:'Kilowatt Case',p:10000,s:new Array({n:'Zeus | Olympus',v:5000,c:'r-pink',svg:sP},{n:'AK-47 | Inheritance',v:12000,c:'r-red',svg:sAK},{n:'★ Kukri Knife',v:28000,c:'r-gold',svg:sK})},
+  {ico:'🔮',n:'Bravo Case',p:20000,s:new Array({n:'Deagle | Golden',v:10000,c:'r-pink',svg:sP},{n:'AK-47 | Fire Serpent',v:25000,c:'r-red',svg:sAK},{n:'★ Karambit Fade',v:55000,c:'r-gold',svg:sK})},
+  {ico:'👑',n:'Cobblestone',p:50000,s:new Array({n:'M4A1-S | Knight',v:25000,c:'r-pink',svg:sAK},{n:'AWP | Dragon Lore',v:65000,c:'r-red',svg:sAWP},{n:'★ M9 Bayonet',v:130000,c:'r-gold',svg:sK})},
+  {ico:'🔪',n:'Knife Case',p:100000,s:new Array({n:'★ Gut Knife',v:45000,c:'r-gold',svg:sK},{n:'★ Talon Doppler',v:110000,c:'r-gold',svg:sK},{n:'★ Karambit Lore',v:250000,c:'r-gold',svg:sK})}
+);
 
-document.getElementById('caseList').innerHTML=allCases.map((c,i)=>'<div class="c-card" onclick="selCase('+i+')"><div style="font-size:24px">'+c.n.split(' ')[0]+'</div><b>'+c.n.slice(2)+'</b><br><span style="color:#4cd964;font-size:12px">'+c.p.toLocaleString()+' 🪙</span></div>').join('');
+document.getElementById('caseList').innerHTML=allCases.map((c,i)=>'<div class="c-card" onclick="selCase('+i+')"><div style="font-size:24px">'+c.ico+'</div><b>'+c.n+'</b><br><span style="color:#4cd964;font-size:12px">'+c.p.toLocaleString()+' 🪙</span></div>').join('');
 
-const shopItems=[{n:'P250 | Sand',p:2500,svg:sP},{n:'Glock | Water',p:15000,svg:sG},{n:'AK-47 | Redline',p:75000,svg:sAK},{n:'AWP | Asiimov',p:350000,svg:sAWP},{n:'★ Karambit | Lore',p:2000000,svg:sK}];
+const shopItems=new Array({n:'P250 | Sand',p:2500,svg:sP},{n:'Glock | Water',p:15000,svg:sG},{n:'AK-47 | Redline',p:75000,svg:sAK},{n:'AWP | Asiimov',p:350000,svg:sAWP},{n:'★ Karambit | Lore',p:2000000,svg:sK});
 document.getElementById('shopGrid').innerHTML=shopItems.map((x,idx)=>'<div class="card" style="text-align:center">'+x.svg+'<br><b style="font-size:12px">'+x.n+'</b><br><br><button class="t-btn" onclick="buy('+idx+')">'+x.p.toLocaleString()+' 🪙</button></div>').join('');
 
-function selCase(i){cIdx=i;let c=allCases[i];window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cTitle').innerText=c.n;document.getElementById('spBtn').innerText='Keys ochish — '+c.p.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
+function selCase(i){cIdx=i;let c=allCases.at(i);window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cTitle').innerText=c.ico+' '+c.n;document.getElementById('spBtn').innerText='Keys ochish — '+c.p.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
 
 const tape=document.getElementById('tape');
 function fill(){
-  let pool=allCases[cIdx].s;
+  let pool=allCases.at(cIdx).s;
   document.getElementById('caseDrops').innerHTML=pool.map(x=>'<div class="mini-s '+x.c+'">'+x.svg+'<br><b>'+x.n+'</b><br><span style="color:#4cd964">'+x.v.toLocaleString()+'</span></div>').join('');
   tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';
-  for(let i=0;i<35;i++){let x=pool[Math.floor(Math.random()*pool.length)];let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+x.v.toLocaleString()+'</span>';d.dataset.n=x.n;d.dataset.v=x.v;d.dataset.svg=x.svg;tape.appendChild(d);}
+  for(let i=0;i<35;i++){let x=pool.at(Math.floor(Math.random()*pool.length));let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+x.v.toLocaleString()+'</span>';d.dataset.n=x.n;d.dataset.v=x.v;d.dataset.svg=x.svg;tape.appendChild(d);}
 }
 fill();
 
-function spin(){let c=allCases[cIdx];if(bal<c.p)return alert('Mablag yetarli emas');upd(-c.p,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);myInv.push({n:w.dataset.n,v:val,svg:w.dataset.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));document.getElementById('cRes').innerText='🎉 '+w.dataset.n+' ('+val.toLocaleString()+' 🪙) Inventarga tushdi!';document.getElementById('spBtn').disabled=false;},4100);},50);}
+function spin(){let c=allCases.at(cIdx);if(bal<c.p)return alert('Mablag yetarli emas');upd(-c.p,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children.item(25);let val=Number(w.dataset.v);myInv.push({n:w.dataset.n,v:val,svg:w.dataset.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));document.getElementById('cRes').innerText='🎉 '+w.dataset.n+' ('+val.toLocaleString()+' 🪙) Inventarga tushdi!';document.getElementById('spBtn').disabled=false;},4100);},50);}
 function renderInv(){const g=document.getElementById('invGrid');if(!myInv.length){g.innerHTML='<p style="color:#7a828e;grid-column:1/-1;text-align:center;padding:20px">Inventar bo\'sh!</p>';return;}g.innerHTML=myInv.map((item,i)=>'<div class="card" style="text-align:center">'+item.svg+'<br><b style="font-size:12px">'+item.n+'</b><div class="inv-btns"><button class="sell-b" onclick="sellSkin('+i+')">Sotish +'+item.v.toLocaleString()+'</button><button class="out-b" onclick="withdrawSkin('+i+')">Chiqarish</button></div></div>').join('');}
-function sellSkin(i){let s=myInv.splice(i,1)[0];localStorage.setItem('cs_inv',JSON.stringify(myInv));upd(s.v,10);renderInv();}
-function withdrawSkin(i){if(!tradeUrl){setUrl();if(!tradeUrl)return;}let s=myInv.splice(i,1)[0];localStorage.setItem('cs_inv',JSON.stringify(myInv));renderInv();alert('✅ '+s.n+' chiqarishga yuborildi!');}
+function sellSkin(i){let s=myInv.splice(i,1).at(0);localStorage.setItem('cs_inv',JSON.stringify(myInv));upd(s.v,10);renderInv();}
+function withdrawSkin(i){if(!tradeUrl){setUrl();if(!tradeUrl)return;}let s=myInv.splice(i,1).at(0);localStorage.setItem('cs_inv',JSON.stringify(myInv));renderInv();alert('✅ '+s.n+' chiqarishga yuborildi!');}
 function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
-function buy(idx){let x=shopItems[idx];if(bal<x.p)return alert('Mablag yetarli emas');upd(-x.p,200);myInv.push({n:x.n,v:Math.floor(x.p*0.7),svg:x.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));alert('✅ '+x.n+' Inventarga qo\'shildi!');}
+function buy(idx){let x=shopItems.at(idx);if(bal<x.p)return alert('Mablag yetarli emas');upd(-x.p,200);myInv.push({n:x.n,v:Math.floor(x.p*0.7),svg:x.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));alert('✅ '+x.n+' Inventarga qo\'shildi!');}
 </script>
 </body>
 </html>
