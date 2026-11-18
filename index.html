@@ -1,222 +1,171 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CS2 Skinoz App</title>
-    <script src="https://telegram.org"></script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: #0f131a; color: #fff; padding-bottom: 70px; overflow-x: hidden; }
-        
-        /* Tepa panel */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #161b24; border-bottom: 1px solid #232a38; position: sticky; top: 0; z-index: 100; }
-        .logo { font-weight: 900; font-size: 18px; color: #ff9900; letter-spacing: 1px; }
-        .balance-box { background: #1f2735; padding: 6px 12px; border-radius: 8px; border: 1px solid #ff9900; font-weight: bold; color: #ffaa00; font-size: 14px; }
-
-        /* Live Drop lentasi */
-        .live-drop { background: #131720; padding: 8px; display: flex; gap: 8px; overflow: hidden; border-bottom: 1px solid #1e2532; }
-        .drop-item { background: linear-gradient(135deg, #1d2432, #2a1b38); border-left: 3px solid #eb4b4b; padding: 5px 10px; border-radius: 6px; font-size: 11px; white-space: nowrap; }
-
-        /* Bo'limlar (Tabs) */
-        .tabs { display: flex; justify-content: space-around; background: #161b24; padding: 10px 5px; margin: 10px; border-radius: 10px; }
-        .tab { background: none; border: none; color: #8a99b5; font-weight: bold; font-size: 14px; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
-        .tab.active { background: #ff9900; color: #000; }
-
-        .section { display: none; padding: 0 12px; }
-        .section.active { display: block; }
-
-        /* Ruletka oynasi */
-        .roulette-wrap { position: relative; width: 100%; height: 110px; background: #161b24; border: 2px solid #2b3547; border-radius: 12px; overflow: hidden; margin: 15px 0; }
-        .pointer { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: #ff9900; z-index: 10; box-shadow: 0 0 10px #ff9900; }
-        .tape { display: flex; height: 100%; transition: transform 4s cubic-bezier(0.1, 0.85, 0.2, 1); }
-        .skin-card { min-width: 100px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid #232a38; padding: 5px; text-align: center; }
-        .skin-card span { font-size: 28px; margin-bottom: 5px; }
-        .skin-card p { font-size: 11px; font-weight: bold; }
-        .rarity-blue { border-bottom: 4px solid #4b69ff; background: rgba(75, 105, 255, 0.1); }
-        .rarity-pink { border-bottom: 4px solid #d32ce6; background: rgba(211, 44, 230, 0.1); }
-        .rarity-red { border-bottom: 4px solid #eb4b4b; background: rgba(235, 75, 75, 0.15); }
-        .rarity-gold { border-bottom: 4px solid #ffd700; background: rgba(255, 215, 0, 0.2); }
-
-        /* Tugmalar va kartochkalar */
-        .main-btn { background: linear-gradient(90deg, #ff8800, #ffbb00); color: #000; border: none; padding: 15px; width: 100%; border-radius: 10px; font-size: 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3); }
-        .main-btn:disabled { opacity: 0.5; }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .item-box { background: #161b24; border: 1px solid #252e3f; border-radius: 10px; padding: 12px; text-align: center; }
-        .item-box .icon { font-size: 35px; margin-bottom: 8px; }
-        .item-box h4 { font-size: 13px; margin-bottom: 5px; }
-        .buy-btn { background: #243044; color: #ffaa00; border: 1px solid #ffaa00; padding: 8px; width: 100%; border-radius: 6px; font-weight: bold; margin-top: 8px; cursor: pointer; }
-        
-        .result-toast { background: #1e283a; border: 1px solid #ff9900; padding: 12px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: bold; display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SHOT CS2</title>
+<script src="https://telegram.org"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
+.card{background:#16181d;border-radius:16px;padding:14px;margin-bottom:12px}
+.prof{display:flex;align-items:center;gap:12px}
+.ava{width:52px;height:52px;border-radius:50%;background:#2b303a;object-fit:cover}
+.bal{font-size:26px;font-weight:800;display:flex;align-items:center;gap:6px}
+.lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:auto}
+.xp-bar{height:6px;background:#262930;border-radius:4px;margin-top:8px;overflow:hidden}
+.xp-fill{height:100%;width:35%;background:#4cd964}
+.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:16px;font-weight:700;margin-bottom:16px;cursor:pointer}
+.task{background:#16181d;border-radius:14px;padding:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.task-t{font-size:14px;font-weight:600}
+.task-s{font-size:11px;color:#7a828e;margin-top:3px}
+.t-btn{background:#0088cc;color:#fff;border:none;padding:7px 14px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer}
+.t-btn.done{background:#1f3324;color:#4cd964}
+.sec{display:none}.sec.act{display:block}
+.r-box{position:relative;height:105px;background:#16181d;border-radius:14px;overflow:hidden;margin:12px 0;border:1px solid #2a2e37}
+.ptr{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#0088cc;z-index:5}
+.tape{display:flex;height:100%;transition:transform 4s cubic-bezier(.1,.85,.2,1)}
+.s-item{min-width:95px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:11px;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nav{position:fixed;bottom:10px;left:12px;right:12px;background:#1c1f26;border-radius:22px;display:flex;justify-content:space-around;padding:8px;border:1px solid #2a2e37;z-index:99}
+.n-btn{background:none;border:none;color:#7a828e;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 12px;border-radius:14px;cursor:pointer}
+.n-btn.act{background:#2c303a;color:#fff}
+</style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo">⚡ CS2 SKINOZ</div>
-        <div class="balance-box">💰 <span id="bal">5000</span></div>
+<div class="card">
+  <div class="prof">
+    <img id="ava" class="ava" src="https://flaticon.com">
+    <div>
+      <div class="bal"><span id="bal">3 707</span> 🪙</div>
+      <div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP dan 2 567 XP</div>
     </div>
+    <div class="lvl" id="lvl">LVL 1</div>
+  </div>
+  <div class="xp-bar"><div class="xp-fill" id="xpBar"></div></div>
+</div>
 
-    <div class="live-drop" id="liveDrop">
-        <div class="drop-item">🔥 Aziz: AWP | Asiimov</div>
-        <div class="drop-item">🔪 Bekzod: Karambit</div>
-        <div class="drop-item">🔫 Sardor: AK-47 | Redline</div>
-    </div>
+<!-- 1. ASOSIY (VAZIFALAR) -->
+<div id="home" class="sec act">
+  <button class="blue-btn" onclick="alert('Tanga sotib olish uchun adminga yozing!')">Tanga sotib olish</button>
+  <h3 style="margin-bottom:10px;font-size:18px">Vazifalar</h3>
+  <div class="task"><div><div class="task-t">Steam hisobni ulang</div><div class="task-s">Trade URL kiriting</div></div><button class="t-btn" onclick="doTask(this,400)">400 🪙</button></div>
+  <div class="task"><div><div class="task-t">Familiyada bot nomi</div><div class="task-s">0/10 Kun · Maks +230</div></div><button class="t-btn" onclick="doTask(this,50)">50 🪙</button></div>
+  <div class="task"><div><div class="task-t">Bio da referal havolasi</div><div class="task-s">0/10 Kun · Maks +200</div></div><button class="t-btn" onclick="doTask(this,20)">20 🪙</button></div>
+  <div class="task"><div><div class="task-t">Do'stni taklif qiling</div><div class="task-s">Har bir do'st uchun +100</div></div><button class="t-btn" onclick="copyRef()">Do'stlar</button></div>
+  <div class="task"><div><div class="task-t">Kunlik bonus</div><div class="task-s">Har 24 soatda</div></div><button class="t-btn" onclick="doTask(this,230)">+230 🪙</button></div>
+  <div class="task"><div><div class="task-t">Kanalga obuna</div><div class="task-s">CS2 Cases & Skins</div></div><button class="t-btn" onclick="doTask(this,250)">250 🪙</button></div>
+</div>
 
-    <div class="tabs">
-        <button class="tab active" onclick="switchTab('cases', this)">📦 KEYSLAR</button>
-        <button class="tab" onclick="switchTab('upgrade', this)">⚡ UPGRADE</button>
-        <button class="tab" onclick="switchTab('shop', this)">🛒 MAGAZIN</button>
-    </div>
+<!-- 2. KEYSLAR -->
+<div id="cases" class="sec">
+  <h3>📦 Dragon Keys</h3>
+  <div class="r-box"><div class="ptr"></div><div class="tape" id="tape"></div></div>
+  <button class="blue-btn" id="spBtn" onclick="spin()">Keys ochish — 1 000 🪙</button>
+  <div id="cRes" style="text-align:center;font-weight:700;color:#4cd964"></div>
+</div>
 
-    <!-- KEYSLAR BO'LIMI -->
-    <div id="cases" class="section active">
-        <h3 style="text-align:center; margin-top:5px;">🔥 Dragon Lore Keys</h3>
-        <div class="roulette-wrap">
-            <div class="pointer"></div>
-            <div class="tape" id="tape"></div>
-        </div>
-        <button class="main-btn" id="spinBtn" onclick="spinCase()">KEYS OCHISH — 1 000 💰</button>
-        <div class="result-toast" id="caseResult"></div>
-    </div>
+<!-- 3. O'YINLAR (UPGRADE) -->
+<div id="games" class="sec">
+  <div class="card" style="text-align:center">
+    <h3>⚡ X2 Upgrade</h3>
+    <p style="color:#7a828e;font-size:13px;margin:10px 0">Imkoniyat: 45%</p>
+    <button class="blue-btn" onclick="upg(500)">500 🪙 tikish</button>
+    <button class="blue-btn" onclick="upg(2000)">2 000 🪙 tikish</button>
+    <div id="uRes" style="font-weight:700"></div>
+  </div>
+</div>
 
-    <!-- UPGRADE BO'LIMI -->
-    <div id="upgrade" class="section">
-        <div style="background:#161b24; padding:20px; border-radius:12px; text-align:center; margin-top:10px;">
-            <h3>⚡ X2 UPGRADE</h3>
-            <p style="color:#8a99b5; font-size:13px; margin:10px 0;">Tangalaringizni 2 barobar ko'paytiring (Imkoniyat: 45%)</p>
-            <button class="main-btn" style="margin-bottom:10px;" onclick="playUpgrade(500)">500 💰 TIKISH (X2)</button>
-            <button class="main-btn" onclick="playUpgrade(2500)">2 500 💰 TIKISH (X2)</button>
-            <div class="result-toast" id="upgResult"></div>
-        </div>
-    </div>
+<!-- 4. INVENTAR (MAGAZIN) -->
+<div id="shop" class="sec">
+  <h3 style="margin-bottom:10px">🛒 Skinlar Magazini</h3>
+  <div class="grid">
+    <div class="card" style="text-align:center"><div style="font-size:32px">📦</div><div style="margin:6px 0;font-size:13px">Grafiti</div><button class="t-btn" onclick="buy('Grafiti',500)">500 🪙</button></div>
+    <div class="card" style="text-align:center"><div style="font-size:32px">🔫</div><div style="margin:6px 0;font-size:13px">P250 Sand</div><button class="t-btn" onclick="buy('P250',2500)">2 500 🪙</button></div>
+    <div class="card" style="text-align:center"><div style="font-size:32px">🔥</div><div style="margin:6px 0;font-size:13px">AK-47 Mesh</div><button class="t-btn" onclick="buy('AK-47',75000)">75 000 🪙</button></div>
+    <div class="card" style="text-align:center"><div style="font-size:32px">🔪</div><div style="margin:6px 0;font-size:13px">Karambit</div><button class="t-btn" onclick="buy('Karambit',2000000)">2M 🪙</button></div>
+  </div>
+</div>
 
-    <!-- MAGAZIN BO'LIMI -->
-    <div id="shop" class="section">
-        <div class="grid">
-            <div class="item-box">
-                <div class="icon">📦</div>
-                <h4>Grafiti / Quti</h4>
-                <button class="buy-btn" onclick="buySkin('Grafiti', 500)">500 💰</button>
-            </div>
-            <div class="item-box">
-                <div class="icon">🔫</div>
-                <h4>P250 | Sand Dune</h4>
-                <button class="buy-btn" onclick="buySkin('P250 | Sand Dune', 2500)">2 500 💰</button>
-            </div>
-            <div class="item-box">
-                <div class="icon">🔫</div>
-                <h4>AK-47 | Safari Mesh</h4>
-                <button class="buy-btn" onclick="buySkin('AK-47 | Safari Mesh', 75000)">75 000 💰</button>
-            </div>
-            <div class="item-box">
-                <div class="icon">🔪</div>
-                <h4>Karambit | Lore</h4>
-                <button class="buy-btn" onclick="buySkin('Karambit | Lore', 2000000)">2 000 000 💰</button>
-            </div>
-        </div>
-        <div class="result-toast" id="shopResult"></div>
-    </div>
+<div class="nav">
+  <button class="n-btn act" onclick="tab('home',this)"><span>🏠</span>Asosiy</button>
+  <button class="n-btn" onclick="tab('cases',this)"><span>📦</span>Keyslar</button>
+  <button class="n-btn" onclick="tab('games',this)"><span>🎮</span>O'yinlar</button>
+  <button class="n-btn" onclick="tab('shop',this)"><span>📋</span>Magazin</button>
+</div>
 
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
+<script>
+const tg=window.Telegram.WebApp;tg.ready();tg.expand();
+let uId='guest';
+if(tg.initDataUnsafe&&tg.initDataUnsafe.user){
+  uId=tg.initDataUnsafe.user.id;
+  if(tg.initDataUnsafe.user.photo_url)document.getElementById('ava').src=tg.initDataUnsafe.user.photo_url;
+}
+let bal=Number(localStorage.getItem('b_'+uId))||3707;
+let xp=Number(localStorage.getItem('x_'+uId))||459;
+function upd(v,x=0){
+  bal+=v;xp+=x;localStorage.setItem('b_'+uId,bal);localStorage.setItem('x_'+uId,xp);
+  document.getElementById('bal').innerText=bal.toLocaleString();
+  let lv=Math.floor(xp/500)+1;
+  document.getElementById('lvl').innerText='LVL '+lv;
+  document.getElementById('xpTxt').innerText=xp+' XP dan '+(lv*500)+' XP';
+  document.getElementById('xpBar').style.width=((xp%500)/5)+'%';
+}
+upd(0,0);
 
-        let balance = Number(localStorage.getItem('cs2_bal')) || 5000;
-        document.getElementById('bal').innerText = balance.toLocaleString();
-
-        function updateBal(amount) {
-            balance += amount;
-            localStorage.setItem('cs2_bal', balance);
-            document.getElementById('bal').innerText = balance.toLocaleString();
-        }
-
-        function switchTab(id, el) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            el.classList.add('active');
-        }
-
-        const skins = [
-            { name: 'P250 | Sand', val: 400, icon: '🔫', cls: 'rarity-blue' },
-            { name: 'Glock | Blaze', val: 800, icon: '🔫', cls: 'rarity-blue' },
-            { name: 'AK-47 | Redline', val: 1500, icon: '🔥', cls: 'rarity-pink' },
-            { name: 'AWP | Asiimov', val: 3000, icon: '🎯', cls: 'rarity-red' },
-            { name: 'Karambit Gold', val: 10000, icon: '🔪', cls: 'rarity-gold' }
-        ];
-
-        const tape = document.getElementById('tape');
-        function buildTape() {
-            tape.innerHTML = '';
-            tape.style.transition = 'none';
-            tape.style.transform = 'translateX(0px)';
-            for (let i = 0; i < 40; i++) {
-                const s = skins[Math.floor(Math.random() * skins.length)];
-                const div = document.createElement('div');
-                div.className = `skin-card ${s.cls}`;
-                div.innerHTML = `<span>${s.icon}</span><p>${s.name}</p><p style="color:#ffaa00">${s.val} 💰</p>`;
-                div.dataset.val = s.val;
-                div.dataset.name = s.name;
-                tape.appendChild(div);
-            }
-        }
-        buildTape();
-
-        function spinCase() {
-            if (balance < 1000) return alert('Balans yetarli emas!');
-            const btn = document.getElementById('spinBtn');
-            const res = document.getElementById('caseResult');
-            btn.disabled = true;
-            res.style.display = 'none';
-            updateBal(-1000);
-            buildTape();
-
-            setTimeout(() => {
-                const winIndex = 28;
-                const offset = (winIndex * 100) - (tape.parentElement.offsetWidth / 2) + 50;
-                tape.style.transition = 'transform 4s cubic-bezier(0.1, 0.85, 0.2, 1)';
-                tape.style.transform = `translateX(-${offset}px)`;
-
-                setTimeout(() => {
-                    const wonCard = tape.children[winIndex];
-                    const winVal = Number(wonCard.dataset.val);
-                    const winName = wonCard.dataset.name;
-                    updateBal(winVal);
-                    res.innerText = `🎉 YUTUQ: ${winName} (+${winVal} 💰)`;
-                    res.style.display = 'block';
-                    btn.disabled = false;
-                }, 4100);
-            }, 50);
-        }
-
-        function playUpgrade(bet) {
-            if (balance < bet) return alert('Balans yetarli emas!');
-            const res = document.getElementById('upgResult');
-            if (Math.random() < 0.45) {
-                updateBal(bet);
-                res.style.borderColor = '#00ff88';
-                res.innerText = `🎉 UPGRADE O'XSHADI! +${bet.toLocaleString()} 💰`;
-            } else {
-                updateBal(-bet);
-                res.style.borderColor = '#ff4444';
-                res.innerText = `💥 KUYDI! -${bet.toLocaleString()} 💰`;
-            }
-            res.style.display = 'block';
-        }
-
-        function buySkin(name, price) {
-            if (balance < price) return alert(`Mablag' yetarli emas! Kerak: ${price.toLocaleString()} 💰`);
-            updateBal(-price);
-            const res = document.getElementById('shopResult');
-            res.innerText = `✅ ${name} sotib olindi! Bot chatiga kirib Trade URL orqali qabul qiling.`;
-            res.style.display = 'block';
-        }
-    </script>
+function tab(id,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));
+  document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));
+  document.getElementById(id).classList.add('act');el.classList.add('act');
+}
+function doTask(btn,amt){
+  if(btn.classList.contains('done'))return;
+  btn.classList.add('done');btn.innerText='✓ '+amt;upd(amt,120);
+}
+function copyRef(){
+  navigator.clipboard.writeText('https://t.me);
+  alert('Referal havola nusxalandi!');
+}
+const items=[{n:'P250',v:400,i:'🔫'},{n:'Glock',v:800,i:'🔫'},{n:'AK-47',v:1600,i:'🔥'},{n:'AWP',v:3200,i:'🎯'},{n:'Karambit',v:9000,i:'🔪'}];
+const tape=document.getElementById('tape');
+function fill(){
+  tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';
+  for(let i=0;i<35;i++){
+    let x=items[Math.floor(Math.random()*items.length)];
+    let d=document.createElement('div');d.className='s-item';
+    d.innerHTML='<div style="font-size:26px">'+x.i+'</div><b>'+x.n+'</b><span style="color:#4cd964">'+x.v+'</span>';
+    d.dataset.v=x.v;d.dataset.n=x.n;tape.appendChild(d);
+  }
+}
+fill();
+function spin(){
+  if(bal<1000)return alert('Mablag yetarli emas');
+  upd(-1000,150);fill();document.getElementById('spBtn').disabled=true;
+  setTimeout(()=>{
+    let off=(25*95)-(tape.parentElement.offsetWidth/2)+47;
+    tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';
+    tape.style.transform='translateX(-'+off+'px)';
+    setTimeout(()=>{
+      let w=tape.children;let val=Number(w.dataset.v);upd(val,50);
+      document.getElementById('cRes').innerText='Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';
+      document.getElementById('spBtn').disabled=false;
+    },4100);
+  },50);
+}
+function upg(b){
+  if(bal<b)return alert('Mablag yetarli emas');
+  if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}
+  else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}
+}
+function buy(n,p){
+  if(bal<p)return alert('Mablag yetarli emas');
+  upd(-p,200);alert(n+' sotib olindi!');
+}
+</script>
 </body>
 </html>
+
 
 
 
