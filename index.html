@@ -163,6 +163,22 @@ function buy(n,p){
   upd(-p,200);alert(n+' sotib olindi!');
 }
 </script>
+  <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
+  <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:360px;text-align:center">
+    <h3 style="margin-bottom:10px">💳 Tanga sotib olish</h3>
+    <div style="background:#0b0c0e;padding:12px;border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6">
+      <div>• 10 000 so'm — <b>10 000 🪙</b></div>
+      <div style="color:#4cd964">• 25 000 so'm — <b>30 000 🪙 (+5k bonus)</b></div>
+      <div>• 50 000 so'm — <b>65 000 🪙 (+15k bonus)</b></div>
+    </div>
+    <p style="font-size:12px;color:#7a828e;margin-bottom:6px">Karta raqami (nusxalash uchun bosing):</p>
+    <div onclick="navigator.clipboard.writeText('8600000000000000');alert('Karta raqami nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;font-size:16px;letter-spacing:1px;margin-bottom:14px;cursor:pointer;color:#00aaff">
+      9860 0201 4403 0861 📋
+    </div>
+    <button class="blue-btn" style="margin-bottom:8px" onclick="tg.close()">📸 Chekni botga yuborish</button>
+    <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e;font-size:14px;padding:6px">Yopish</button>
+  </div>
+</div>
 </body>
 </html>
 
