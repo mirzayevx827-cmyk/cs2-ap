@@ -10,7 +10,7 @@
 body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 .card{background:#16181d;border-radius:16px;padding:14px;margin-bottom:12px}
 .prof{display:flex;align-items:center;gap:12px}
-.ava{width:50px;height:50px;border-radius:50%;background:#2b303a}
+.ava{width:50px;height:50px;border-radius:50%;background:#0088cc;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
 .bal{font-size:24px;font-weight:800}
 .lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:auto}
 .blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:14px}
@@ -22,13 +22,12 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 .ptr{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#0088cc;z-index:5}
 .tape{display:flex;height:100%;transition:transform 4s cubic-bezier(.1,.85,.2,1)}
 .s-item{min-width:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:10px;padding:4px;text-align:center}
-.s-item img{width:76px;height:54px;object-fit:contain;margin-bottom:3px}
+.s-item svg{width:75px;height:45px;margin-bottom:4px}
 .r-blue{border-bottom:3px solid #4b69ff;background:linear-gradient(0deg,rgba(75,105,255,.15),transparent)}
 .r-pink{border-bottom:3px solid #d32ce6;background:linear-gradient(0deg,rgba(211,44,230,.15),transparent)}
 .r-red{border-bottom:3px solid #eb4b4b;background:linear-gradient(0deg,rgba(235,75,75,.2),transparent)}
 .r-gold{border-bottom:3px solid #ffd700;background:linear-gradient(0deg,rgba(255,215,0,.25),transparent)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.shop-img{width:95px;height:68px;object-fit:contain;margin-bottom:6px}
 .nav{position:fixed;bottom:10px;left:12px;right:12px;background:#1c1f26;border-radius:20px;display:flex;justify-content:space-around;padding:8px;border:1px solid #2a2e37}
 .n-btn{background:none;border:none;color:#7a828e;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 12px;border-radius:12px}
 .n-btn.act{background:#2c303a;color:#fff}
@@ -38,7 +37,7 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 
 <div class="card">
   <div class="prof">
-    <img id="ava" class="ava" src="https://flaticon.com">
+    <div class="ava">👤</div>
     <div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP</div></div>
     <div class="lvl" id="lvl">LVL 1</div>
   </div>
@@ -74,12 +73,7 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 </div>
 
 <div id="shop" class="sec">
-  <div class="grid">
-    <div class="card" style="text-align:center"><img class="shop-img" src="https://steamstatic.com"><br><b style="font-size:12px">P250 | Sand Dune</b><br><br><button class="t-btn" onclick="buy('P250 | Sand Dune',2500)">2 500 🪙</button></div>
-    <div class="card" style="text-align:center"><img class="shop-img" src="https://steamstatic.com"><br><b style="font-size:12px">Glock | Water</b><br><br><button class="t-btn" onclick="buy('Glock | Water',15000)">15 000 🪙</button></div>
-    <div class="card" style="text-align:center"><img class="shop-img" src="https://steamstatic.com"><br><b style="font-size:12px">AK-47 | Redline</b><br><br><button class="t-btn" onclick="buy('AK-47 | Redline',75000)">75 000 🪙</button></div>
-    <div class="card" style="text-align:center"><img class="shop-img" src="https://steamstatic.com"><br><b style="font-size:12px">★ Karambit | Lore</b><br><br><button class="t-btn" onclick="buy('Karambit | Lore',2000000)">2M 🪙</button></div>
-  </div>
+  <div class="grid" id="shopGrid"></div>
 </div>
 
 <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
@@ -107,16 +101,27 @@ function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.rem
 function doTask(b,a){if(!b.classList.contains('done')){b.classList.add('done');b.innerText='✓ '+a;upd(a,100);}}
 let cP=1000,cM=1;
 function selCase(n,p,m){cP=p;cM=m;document.getElementById('cTitle').innerText=n;document.getElementById('spBtn').innerText='Keys ochish — '+p.toLocaleString()+' 🪙';fill();}
+
+const svgP='<svg viewBox="0 0 100 50"><path d="M20 15h50v12H45l-5 18H25l5-18H20z" fill="#4b69ff"/></svg>';
+const svgG='<svg viewBox="0 0 100 50"><path d="M18 14h55v14H42l-4 17H22l5-17H18z" fill="#00bcd4"/></svg>';
+const svgAK='<svg viewBox="0 0 100 50"><path d="M5 24h20l10-6h35l25 4v6H70l-8 10h-8l5-10H35l-12 10H10l8-10H5z" fill="#eb4b4b"/></svg>';
+const svgAWP='<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#ff9800"/></svg>';
+const svgK='<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/><circle cx="20" cy="34" r="5" fill="#16181d"/></svg>';
+
 const items=[
-  {n:'P250 | Sand',v:400,c:'r-blue',img:'https://steamstatic.com'},
-  {n:'Glock | Water',v:800,c:'r-pink',img:'https://steamstatic.com'},
-  {n:'AK-47 | Redline',v:1600,c:'r-pink',img:'https://steamstatic.com'},
-  {n:'AWP | Asiimov',v:3200,c:'r-red',img:'https://steamstatic.com'},
-  {n:'Karambit | Lore',v:9000,c:'r-gold',img:'https://steamstatic.com'}
+  {n:'P250 | Sand',v:400,p:2500,c:'r-blue',svg:svgP},
+  {n:'Glock | Water',v:800,p:15000,c:'r-pink',svg:svgG},
+  {n:'AK-47 | Redline',v:1600,p:75000,c:'r-pink',svg:svgAK},
+  {n:'AWP | Asiimov',v:3200,p:350000,c:'r-red',svg:svgAWP},
+  {n:'★ Karambit | Lore',v:9000,p:2000000,c:'r-gold',svg:svgK}
 ];
+
+document.getElementById('shopGrid').innerHTML=items.map(x=>`<div class="card" style="text-align:center">${x.svg}<br><b style="font-size:12px">${x.n}</b><br><br><button class="t-btn" onclick="buy('${x.n}',${x.p})">${x.p.toLocaleString()} 🪙</button></div>`).join('');
+
 const tape=document.getElementById('tape');
-function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML='<img src="'+x.img+'"><b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.v=v;d.dataset.n=x.n;tape.appendChild(d);}}
+function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.v=v;d.dataset.n=x.n;tape.appendChild(d);}}
 fill();
+
 function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
 function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
 function buy(n,p){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);alert(n+' sotib olindi!');}
