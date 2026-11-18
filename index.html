@@ -46,7 +46,7 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <div class="xp-bar"><div class="xp-fill" id="xpBar"></div></div>
 </div>
 
-<!-- 1. ASOSIY (VAZIFALAR) -->
+<!-- 1. ASOSIY -->
 <div id="home" class="sec act">
   <button class="blue-btn" onclick="document.getElementById('payModal').style.display='flex'">Tanga sotib olish</button>
   <h3 style="margin-bottom:10px;font-size:18px">Vazifalar</h3>
@@ -64,32 +64,24 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <div class="r-box"><div class="ptr"></div><div class="tape" id="tape"></div></div>
   <button class="blue-btn" id="spBtn" onclick="spin()">Keys ochish — 1 000 🪙</button>
   <div id="cRes" style="text-align:center;font-weight:700;color:#4cd964;margin-bottom:14px"></div>
-
   <h4 style="margin-bottom:8px;color:#7a828e;font-size:13px">Boshqa keyslarni tanlang:</h4>
   <div class="grid">
     <div class="card" style="text-align:center;border:1px solid #2a2e37" onclick="selCase('📦 Armeiskiy Keys',1000,1)">
-      <div style="font-size:32px">📦</div>
-      <div style="font-weight:700;font-size:13px;margin:4px 0">Armeiskiy</div>
-      <div style="color:#4cd964;font-size:12px;font-weight:700">1 000 🪙</div>
+      <div style="font-size:32px">📦</div><div style="font-weight:700;font-size:13px;margin:4px 0">Armeiskiy</div><div style="color:#4cd964;font-size:12px;font-weight:700">1 000 🪙</div>
     </div>
     <div class="card" style="text-align:center;border:1px solid #0088cc" onclick="selCase('🔷 Elita Keys',5000,5)">
-      <div style="font-size:32px">🔷</div>
-      <div style="font-weight:700;font-size:13px;margin:4px 0">Elita Keys</div>
-      <div style="color:#00aaff;font-size:12px;font-weight:700">5 000 🪙</div>
+      <div style="font-size:32px">🔷</div><div style="font-weight:700;font-size:13px;margin:4px 0">Elita Keys</div><div style="color:#00aaff;font-size:12px;font-weight:700">5 000 🪙</div>
     </div>
     <div class="card" style="text-align:center;border:1px solid #d32ce6" onclick="selCase('🔮 Taynoe Keys',15000,15)">
-      <div style="font-size:32px">🔮</div>
-      <div style="font-weight:700;font-size:13px;margin:4px 0">Taynoe Keys</div>
-      <div style="color:#e066ff;font-size:12px;font-weight:700">15 000 🪙</div>
+      <div style="font-size:32px">🔮</div><div style="font-weight:700;font-size:13px;margin:4px 0">Taynoe Keys</div><div style="color:#e066ff;font-size:12px;font-weight:700">15 000 🪙</div>
     </div>
     <div class="card" style="text-align:center;border:1px solid #ff9900" onclick="selCase('👑 Dragon Lore',50000,50)">
-      <div style="font-size:32px">👑</div>
-      <div style="font-weight:700;font-size:13px;margin:4px 0">Dragon Lore</div>
-      <div style="color:#ffaa00;font-size:12px;font-weight:700">50 000 🪙</div>
+      <div style="font-size:32px">👑</div><div style="font-weight:700;font-size:13px;margin:4px 0">Dragon Lore</div><div style="color:#ffaa00;font-size:12px;font-weight:700">50 000 🪙</div>
     </div>
   </div>
+</div>
 
-<!-- 3. O'YINLAR (UPGRADE) -->
+<!-- 3. O'YINLAR -->
 <div id="games" class="sec">
   <div class="card" style="text-align:center">
     <h3>⚡ X2 Upgrade</h3>
@@ -100,7 +92,7 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   </div>
 </div>
 
-<!-- 4. INVENTAR (MAGAZIN) -->
+<!-- 4. MAGAZIN -->
 <div id="shop" class="sec">
   <h3 style="margin-bottom:10px">🛒 Skinlar Magazini</h3>
   <div class="grid">
@@ -111,6 +103,25 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   </div>
 </div>
 
+<!-- TO'LOV OYNASI -->
+<div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
+  <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:360px;text-align:center">
+    <h3 style="margin-bottom:10px">💳 Tanga sotib olish</h3>
+    <div style="background:#0b0c0e;padding:12px;border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6">
+      <div>• 10 000 so'm — <b>10 000 🪙</b></div>
+      <div style="color:#4cd964">• 25 000 so'm — <b>30 000 🪙 (+5k bonus)</b></div>
+      <div>• 50 000 so'm — <b>65 000 🪙 (+15k bonus)</b></div>
+    </div>
+    <p style="font-size:12px;color:#7a828e;margin-bottom:6px">Karta raqami (nusxalash uchun bosing):</p>
+    <div onclick="navigator.clipboard.writeText('9860020144030861');alert('Karta raqami nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;font-size:16px;letter-spacing:1px;margin-bottom:14px;cursor:pointer;color:#00aaff">
+      9860 0201 4403 0861 📋
+    </div>
+    <button class="blue-btn" style="margin-bottom:8px" onclick="tg.close()">📸 Chekni botga yuborish</button>
+    <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e;font-size:14px;padding:6px">Yopish</button>
+  </div>
+</div>
+
+<!-- PASTKI MENYU PANELI -->
 <div class="nav">
   <button class="n-btn act" onclick="tab('home',this)"><span>🏠</span>Asosiy</button>
   <button class="n-btn" onclick="tab('cases',this)"><span>📦</span>Keyslar</button>
@@ -118,13 +129,45 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <button class="n-btn" onclick="tab('shop',this)"><span>📋</span>Magazin</button>
 </div>
 
-let cPrice=1000, cMult=1;
+<script>
+const tg=window.Telegram.WebApp;tg.ready();tg.expand();
+let uId='guest';
+if(tg.initDataUnsafe&&tg.initDataUnsafe.user){
+  uId=tg.initDataUnsafe.user.id;
+  if(tg.initDataUnsafe.user.photo_url)document.getElementById('ava').src=tg.initDataUnsafe.user.photo_url;
+}
+let bal=Number(localStorage.getItem('b_'+uId))||3707;
+let xp=Number(localStorage.getItem('x_'+uId))||459;
+function upd(v,x=0){
+  bal+=v;xp+=x;localStorage.setItem('b_'+uId,bal);localStorage.setItem('x_'+uId,xp);
+  document.getElementById('bal').innerText=bal.toLocaleString();
+  let lv=Math.floor(xp/500)+1;
+  document.getElementById('lvl').innerText='LVL '+lv;
+  document.getElementById('lvl').innerText='LVL '+lv;
+  document.getElementById('xpTxt').innerText=xp+' XP dan '+(lv*500)+' XP';
+  document.getElementById('xpBar').style.width=((xp%500)/5)+'%';
+}
+upd(0,0);
+
+function tab(id,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));
+  document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));
+  document.getElementById(id).classList.add('act');el.classList.add('act');
+}
+function doTask(btn,amt){
+  if(btn.classList.contains('done'))return;
+  btn.classList.add('done');btn.innerText='✓ '+amt;upd(amt,120);
+}
+function copyRef(){
+  navigator.clipboard.writeText('https://t.me);
+  alert('Referal havola nusxalandi!');
+}
+let cPrice=1000,cMult=1;
 function selCase(name,price,mult){
-  cPrice=price; cMult=mult;
+  cPrice=price;cMult=mult;
   document.getElementById('cTitle').innerText=name;
   document.getElementById('spBtn').innerText='Keys ochish — '+price.toLocaleString()+' 🪙';
-  document.getElementById('cRes').innerText='';
-  fill();
+  document.getElementById('cRes').innerText='';fill();
 }
 const items=[{n:'P250',v:400,i:'🔫'},{n:'Glock',v:800,i:'🔫'},{n:'AK-47',v:1600,i:'🔥'},{n:'AWP',v:3200,i:'🎯'},{n:'Karambit',v:9000,i:'🔪'}];
 const tape=document.getElementById('tape');
@@ -163,25 +206,8 @@ function buy(n,p){
   upd(-p,200);alert(n+' sotib olindi!');
 }
 </script>
-  <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
-  <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:360px;text-align:center">
-    <h3 style="margin-bottom:10px">💳 Tanga sotib olish</h3>
-    <div style="background:#0b0c0e;padding:12px;border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6">
-      <div>• 10 000 so'm — <b>10 000 🪙</b></div>
-      <div style="color:#4cd964">• 25 000 so'm — <b>30 000 🪙 (+5k bonus)</b></div>
-      <div>• 50 000 so'm — <b>65 000 🪙 (+15k bonus)</b></div>
-    </div>
-    <p style="font-size:12px;color:#7a828e;margin-bottom:6px">Karta raqami (nusxalash uchun bosing):</p>
-    <div onclick="navigator.clipboard.writeText('8600000000000000');alert('Karta raqami nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;font-size:16px;letter-spacing:1px;margin-bottom:14px;cursor:pointer;color:#00aaff">
-      9860 0201 4403 0861 📋
-    </div>
-    <button class="blue-btn" style="margin-bottom:8px" onclick="tg.close()">📸 Chekni botga yuborish</button>
-    <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e;font-size:14px;padding:6px">Yopish</button>
-  </div>
-</div>
 </body>
 </html>
-
 
 
 
