@@ -129,7 +129,7 @@ const shopItems=[
 ];
 document.getElementById('shopGrid').innerHTML=shopItems.map((x,idx)=>`<div class="card" style="text-align:center">${x.svg}<br><b style="font-size:12px">${x.n}</b><br><br><button class="t-btn" onclick="buy(${idx})">${x.p.toLocaleString()} 🪙</button></div>`).join('');
 
-function selCase(n,p,idx){cP=p;cIdx=idx;document.getElementById('cTitle').innerText=n;document.getElementById('spBtn').innerText='Keys ochish — '+p.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
+function selCase(n,idx){const p=[500,1000,2500,5000,10000,20000,50000,100000][idx];window.scrollTo({top:0,behavior:'smooth'});cP=p;cIdx=idx;document.getElementById('cTitle').innerText=n;document.getElementById('spBtn').innerText='Keys ochish — '+p.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
 
 const tape=document.getElementById('tape');
 function fill(){
