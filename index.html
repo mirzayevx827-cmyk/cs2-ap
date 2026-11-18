@@ -33,20 +33,14 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 </style>
 </head>
 <body>
-
 <div class="card">
   <div class="prof">
     <img id="ava" class="ava" src="https://flaticon.com">
-    <div>
-      <div class="bal"><span id="bal">3 707</span> 🪙</div>
-      <div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP dan 2 567 XP</div>
-    </div>
+    <div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP dan 2 567 XP</div></div>
     <div class="lvl" id="lvl">LVL 1</div>
   </div>
   <div class="xp-bar"><div class="xp-fill" id="xpBar"></div></div>
 </div>
-
-<!-- 1. ASOSIY -->
 <div id="home" class="sec act">
   <button class="blue-btn" onclick="document.getElementById('payModal').style.display='flex'">Tanga sotib olish</button>
   <h3 style="margin-bottom:10px;font-size:18px">Vazifalar</h3>
@@ -57,8 +51,6 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <div class="task"><div><div class="task-t">Kunlik bonus</div><div class="task-s">Har 24 soatda</div></div><button class="t-btn" onclick="doTask(this,230)">+230 🪙</button></div>
   <div class="task"><div><div class="task-t">Kanalga obuna</div><div class="task-s">CS2 Cases & Skins</div></div><button class="t-btn" onclick="doTask(this,250)">250 🪙</button></div>
 </div>
-
-<!-- 2. KEYSLAR -->
 <div id="cases" class="sec">
   <h3 id="cTitle" style="margin-bottom:4px">📦 Armeiskiy Keys</h3>
   <div class="r-box"><div class="ptr"></div><div class="tape" id="tape"></div></div>
@@ -66,33 +58,18 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <div id="cRes" style="text-align:center;font-weight:700;color:#4cd964;margin-bottom:14px"></div>
   <h4 style="margin-bottom:8px;color:#7a828e;font-size:13px">Boshqa keyslarni tanlang:</h4>
   <div class="grid">
-    <div class="card" style="text-align:center;border:1px solid #2a2e37" onclick="selCase('📦 Armeiskiy Keys',1000,1)">
-      <div style="font-size:32px">📦</div><div style="font-weight:700;font-size:13px;margin:4px 0">Armeiskiy</div><div style="color:#4cd964;font-size:12px;font-weight:700">1 000 🪙</div>
-    </div>
-    <div class="card" style="text-align:center;border:1px solid #0088cc" onclick="selCase('🔷 Elita Keys',5000,5)">
-      <div style="font-size:32px">🔷</div><div style="font-weight:700;font-size:13px;margin:4px 0">Elita Keys</div><div style="color:#00aaff;font-size:12px;font-weight:700">5 000 🪙</div>
-    </div>
-    <div class="card" style="text-align:center;border:1px solid #d32ce6" onclick="selCase('🔮 Taynoe Keys',15000,15)">
-      <div style="font-size:32px">🔮</div><div style="font-weight:700;font-size:13px;margin:4px 0">Taynoe Keys</div><div style="color:#e066ff;font-size:12px;font-weight:700">15 000 🪙</div>
-    </div>
-    <div class="card" style="text-align:center;border:1px solid #ff9900" onclick="selCase('👑 Dragon Lore',50000,50)">
-      <div style="font-size:32px">👑</div><div style="font-weight:700;font-size:13px;margin:4px 0">Dragon Lore</div><div style="color:#ffaa00;font-size:12px;font-weight:700">50 000 🪙</div>
-    </div>
+    <div class="card" style="text-align:center;border:1px solid #2a2e37" onclick="selCase('📦 Armeiskiy Keys',1000,1)"><div style="font-size:32px">📦</div><div style="font-weight:700;font-size:13px;margin:4px 0">Armeiskiy</div><div style="color:#4cd964;font-size:12px;font-weight:700">1 000 🪙</div></div>
+    <div class="card" style="text-align:center;border:1px solid #0088cc" onclick="selCase('🔷 Elita Keys',5000,5)"><div style="font-size:32px">🔷</div><div style="font-weight:700;font-size:13px;margin:4px 0">Elita Keys</div><div style="color:#00aaff;font-size:12px;font-weight:700">5 000 🪙</div></div>
+    <div class="card" style="text-align:center;border:1px solid #d32ce6" onclick="selCase('🔮 Taynoe Keys',15000,15)"><div style="font-size:32px">🔮</div><div style="font-weight:700;font-size:13px;margin:4px 0">Taynoe Keys</div><div style="color:#e066ff;font-size:12px;font-weight:700">15 000 🪙</div></div>
+    <div class="card" style="text-align:center;border:1px solid #ff9900" onclick="selCase('👑 Dragon Lore',50000,50)"><div style="font-size:32px">👑</div><div style="font-weight:700;font-size:13px;margin:4px 0">Dragon Lore</div><div style="color:#ffaa00;font-size:12px;font-weight:700">50 000 🪙</div></div>
   </div>
 </div>
-
-<!-- 3. O'YINLAR -->
 <div id="games" class="sec">
   <div class="card" style="text-align:center">
-    <h3>⚡ X2 Upgrade</h3>
-    <p style="color:#7a828e;font-size:13px;margin:10px 0">Imkoniyat: 45%</p>
-    <button class="blue-btn" onclick="upg(500)">500 🪙 tikish</button>
-    <button class="blue-btn" onclick="upg(2000)">2 000 🪙 tikish</button>
-    <div id="uRes" style="font-weight:700"></div>
+    <h3>⚡ X2 Upgrade</h3><p style="color:#7a828e;font-size:13px;margin:10px 0">Imkoniyat: 45%</p>
+    <button class="blue-btn" onclick="upg(500)">500 🪙 tikish</button><button class="blue-btn" onclick="upg(2000)">2 000 🪙 tikish</button><div id="uRes" style="font-weight:700"></div>
   </div>
 </div>
-
-<!-- 4. MAGAZIN -->
 <div id="shop" class="sec">
   <h3 style="margin-bottom:10px">🛒 Skinlar Magazini</h3>
   <div class="grid">
@@ -102,8 +79,6 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
     <div class="card" style="text-align:center"><div style="font-size:32px">🔪</div><div style="margin:6px 0;font-size:13px">Karambit</div><button class="t-btn" onclick="buy('Karambit',2000000)">2M 🪙</button></div>
   </div>
 </div>
-
-<!-- TO'LOV OYNASI -->
 <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
   <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:360px;text-align:center">
     <h3 style="margin-bottom:10px">💳 Tanga sotib olish</h3>
@@ -113,98 +88,36 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
       <div>• 50 000 so'm — <b>65 000 🪙 (+15k bonus)</b></div>
     </div>
     <p style="font-size:12px;color:#7a828e;margin-bottom:6px">Karta raqami (nusxalash uchun bosing):</p>
-    <div onclick="navigator.clipboard.writeText('9860020144030861');alert('Karta raqami nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;font-size:16px;letter-spacing:1px;margin-bottom:14px;cursor:pointer;color:#00aaff">
-      9860 0201 4403 0861 📋
-    </div>
+    <div onclick="navigator.clipboard.writeText('9860020144030861');alert('Karta raqami nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;font-size:16px;letter-spacing:1px;margin-bottom:14px;cursor:pointer;color:#00aaff">9860 0201 4403 0861 📋</div>
     <button class="blue-btn" style="margin-bottom:8px" onclick="tg.close()">📸 Chekni botga yuborish</button>
     <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e;font-size:14px;padding:6px">Yopish</button>
   </div>
 </div>
-
-<!-- PASTKI MENYU PANELI -->
 <div class="nav">
   <button class="n-btn act" onclick="tab('home',this)"><span>🏠</span>Asosiy</button>
   <button class="n-btn" onclick="tab('cases',this)"><span>📦</span>Keyslar</button>
   <button class="n-btn" onclick="tab('games',this)"><span>🎮</span>O'yinlar</button>
   <button class="n-btn" onclick="tab('shop',this)"><span>📋</span>Magazin</button>
 </div>
-
 <script>
 const tg=window.Telegram.WebApp;tg.ready();tg.expand();
 let uId='guest';
-if(tg.initDataUnsafe&&tg.initDataUnsafe.user){
-  uId=tg.initDataUnsafe.user.id;
-  if(tg.initDataUnsafe.user.photo_url)document.getElementById('ava').src=tg.initDataUnsafe.user.photo_url;
-}
-let bal=Number(localStorage.getItem('b_'+uId))||3707;
-let xp=Number(localStorage.getItem('x_'+uId))||459;
-function upd(v,x=0){
-  bal+=v;xp+=x;localStorage.setItem('b_'+uId,bal);localStorage.setItem('x_'+uId,xp);
-  document.getElementById('bal').innerText=bal.toLocaleString();
-  let lv=Math.floor(xp/500)+1;
-  document.getElementById('lvl').innerText='LVL '+lv;
-  document.getElementById('lvl').innerText='LVL '+lv;
-  document.getElementById('xpTxt').innerText=xp+' XP dan '+(lv*500)+' XP';
-  document.getElementById('xpBar').style.width=((xp%500)/5)+'%';
-}
+if(tg.initDataUnsafe&&tg.initDataUnsafe.user){uId=tg.initDataUnsafe.user.id;if(tg.initDataUnsafe.user.photo_url)document.getElementById('ava').src=tg.initDataUnsafe.user.photo_url;}
+let bal=Number(localStorage.getItem('b_'+uId))||3707,xp=Number(localStorage.getItem('x_'+uId))||459;
+function upd(v,x=0){bal+=v;xp+=x;localStorage.setItem('b_'+uId,bal);localStorage.setItem('x_'+uId,xp);document.getElementById('bal').innerText=bal.toLocaleString();let lv=Math.floor(xp/500)+1;document.getElementById('lvl').innerText='LVL '+lv;document.getElementById('xpTxt').innerText=xp+' XP dan '+(lv*500)+' XP';document.getElementById('xpBar').style.width=((xp%500)/5)+'%';}
 upd(0,0);
-
-function tab(id,el){
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));
-  document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));
-  document.getElementById(id).classList.add('act');el.classList.add('act');
-}
-function doTask(btn,amt){
-  if(btn.classList.contains('done'))return;
-  btn.classList.add('done');btn.innerText='✓ '+amt;upd(amt,120);
-}
-function copyRef(){
-  navigator.clipboard.writeText('https://t.me);
-  alert('Referal havola nusxalandi!');
-}
+function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');}
+function doTask(btn,amt){if(btn.classList.contains('done'))return;btn.classList.add('done');btn.innerText='✓ '+amt;upd(amt,120);}
+function copyRef(){navigator.clipboard.writeText('https://t.me);alert('Referal havola nusxalandi!');}
 let cPrice=1000,cMult=1;
-function selCase(name,price,mult){
-  cPrice=price;cMult=mult;
-  document.getElementById('cTitle').innerText=name;
-  document.getElementById('spBtn').innerText='Keys ochish — '+price.toLocaleString()+' 🪙';
-  document.getElementById('cRes').innerText='';fill();
-}
+function selCase(name,price,mult){cPrice=price;cMult=mult;document.getElementById('cTitle').innerText=name;document.getElementById('spBtn').innerText='Keys ochish — '+price.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
 const items=[{n:'P250',v:400,i:'🔫'},{n:'Glock',v:800,i:'🔫'},{n:'AK-47',v:1600,i:'🔥'},{n:'AWP',v:3200,i:'🎯'},{n:'Karambit',v:9000,i:'🔪'}];
 const tape=document.getElementById('tape');
-function fill(){
-  tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';
-  for(let i=0;i<35;i++){
-    let x=items[Math.floor(Math.random()*items.length)];
-    let val=x.v*cMult;
-    let d=document.createElement('div');d.className='s-item';
-    d.innerHTML='<div style="font-size:26px">'+x.i+'</div><b>'+x.n+'</b><span style="color:#4cd964">'+val.toLocaleString()+'</span>';
-    d.dataset.v=val;d.dataset.n=x.n;tape.appendChild(d);
-  }
-}
+function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let val=x.v*cMult;let d=document.createElement('div');d.className='s-item';d.innerHTML='<div style="font-size:26px">'+x.i+'</div><b>'+x.n+'</b><span style="color:#4cd964">'+val.toLocaleString()+'</span>';d.dataset.v=val;d.dataset.n=x.n;tape.appendChild(d);}}
 fill();
-function spin(){
-  if(bal<cPrice)return alert('Mablag yetarli emas!');
-  upd(-cPrice,150);fill();document.getElementById('spBtn').disabled=true;
-  setTimeout(()=>{
-    let off=(25*95)-(tape.parentElement.offsetWidth/2)+47;
-    tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';
-    tape.style.transform='translateX(-'+off+'px)';
-    setTimeout(()=>{
-      let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);
-      document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val.toLocaleString()+' 🪙)';
-      document.getElementById('spBtn').disabled=false;
-    },4100);
-  },50);
-}
-function upg(b){
-  if(bal<b)return alert('Mablag yetarli emas');
-  if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}
-  else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}
-}
-function buy(n,p){
-  if(bal<p)return alert('Mablag yetarli emas');
-  upd(-p,200);alert(n+' sotib olindi!');
-}
+function spin(){if(bal<cPrice)return alert('Mablag yetarli emas!');upd(-cPrice,150);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*95)-(tape.parentElement.offsetWidth/2)+47;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val.toLocaleString()+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
+function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
+function buy(n,p){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);alert(n+' sotib olindi!');}
 </script>
 </body>
 </html>
