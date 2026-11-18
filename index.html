@@ -95,25 +95,18 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 
 <script>
 const tg=window.Telegram.WebApp;tg.ready();tg.expand();
-let bal=3707,xp=459;
+let bal=3707,xp=459,cP=1000,cM=1;
 function upd(v,x=0){bal+=v;xp+=x;document.getElementById('bal').innerText=bal.toLocaleString();document.getElementById('lvl').innerText='LVL '+(Math.floor(xp/500)+1);document.getElementById('xpTxt').innerText=xp+' XP';}
 function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');}
 function doTask(b,a){if(!b.classList.contains('done')){b.classList.add('done');b.innerText='✓ '+a;upd(a,100);}}
-let cP=1000,cM=1;
 function selCase(n,p,m){cP=p;cM=m;document.getElementById('cTitle').innerText=n;document.getElementById('spBtn').innerText='Keys ochish — '+p.toLocaleString()+' 🪙';fill();}
 
-const svgP='<svg viewBox="0 0 100 50"><path d="M20 15h50v12H45l-5 18H25l5-18H20z" fill="#4b69ff"/></svg>';
-const svgG='<svg viewBox="0 0 100 50"><path d="M18 14h55v14H42l-4 17H22l5-17H18z" fill="#00bcd4"/></svg>';
-const svgAK='<svg viewBox="0 0 100 50"><path d="M5 24h20l10-6h35l25 4v6H70l-8 10h-8l5-10H35l-12 10H10l8-10H5z" fill="#eb4b4b"/></svg>';
-const svgAWP='<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#ff9800"/></svg>';
-const svgK='<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/><circle cx="20" cy="34" r="5" fill="#16181d"/></svg>';
-
 const items=[
-  {n:'P250 | Sand',v:400,p:2500,c:'r-blue',svg:svgP},
-  {n:'Glock | Water',v:800,p:15000,c:'r-pink',svg:svgG},
-  {n:'AK-47 | Redline',v:1600,p:75000,c:'r-pink',svg:svgAK},
-  {n:'AWP | Asiimov',v:3200,p:350000,c:'r-red',svg:svgAWP},
-  {n:'★ Karambit | Lore',v:9000,p:2000000,c:'r-gold',svg:svgK}
+  {n:'P250 | Sand',v:400,p:2500,c:'r-blue',svg:'<svg viewBox="0 0 100 50"><path d="M20 15h50v12H45l-5 18H25l5-18H20z" fill="#4b69ff"/></svg>'},
+  {n:'Glock | Water',v:800,p:15000,c:'r-pink',svg:'<svg viewBox="0 0 100 50"><path d="M18 14h55v14H42l-4 17H22l5-17H18z" fill="#00bcd4"/></svg>'},
+  {n:'AK-47 | Redline',v:1600,p:75000,c:'r-pink',svg:'<svg viewBox="0 0 100 50"><path d="M5 24h20l10-6h35l25 4v6H70l-8 10h-8l5-10H35l-12 10H10l8-10H5z" fill="#eb4b4b"/></svg>'},
+  {n:'AWP | Asiimov',v:3200,p:350000,c:'r-red',svg:'<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#ff9800"/></svg>'},
+  {n:'★ Karambit',v:9000,p:2000000,c:'r-gold',svg:'<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/></svg>'}
 ];
 
 document.getElementById('shopGrid').innerHTML=items.map(x=>`<div class="card" style="text-align:center">${x.svg}<br><b style="font-size:12px">${x.n}</b><br><br><button class="t-btn" onclick="buy('${x.n}',${x.p})">${x.p.toLocaleString()} 🪙</button></div>`).join('');
@@ -122,9 +115,10 @@ const tape=document.getElementById('tape');
 function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.v=v;d.dataset.n=x.n;tape.appendChild(d);}}
 fill();
 
-function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
+function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children;let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
 function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
 function buy(n,p){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);alert(n+' sotib olindi!');}
 </script>
 </body>
 </html>
+
