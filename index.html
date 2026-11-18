@@ -13,34 +13,39 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 .ava{width:50px;height:50px;border-radius:50%;background:#0088cc;display:flex;align-items:center;justify-content:center;font-size:24px}
 .bal{font-size:24px;font-weight:800}
 .lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:auto}
-.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:14px}
+.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:14px;cursor:pointer}
 .task{background:#16181d;border-radius:14px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.t-btn{background:#0088cc;color:#fff;border:none;padding:7px 14px;border-radius:10px;font-weight:700}
+.t-btn{background:#0088cc;color:#fff;border:none;padding:7px 12px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
 .t-btn.done{background:#1f3324;color:#4cd964}
 .sec{display:none}.sec.act{display:block}
 .r-box{position:relative;height:115px;background:#16181d;border-radius:14px;overflow:hidden;margin:10px 0;border:1px solid #2a2e37}
 .ptr{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#0088cc;z-index:5}
 .tape{display:flex;height:100%;transition:transform 4s cubic-bezier(.1,.85,.2,1)}
 .s-item{min-width:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:10px;padding:4px;text-align:center}
-.s-item svg{width:75px;height:45px;margin-bottom:4px}
+.s-item svg{width:70px;height:42px;margin-bottom:4px}
 .r-blue{border-bottom:3px solid #4b69ff;background:linear-gradient(0deg,rgba(75,105,255,.15),transparent)}
 .r-pink{border-bottom:3px solid #d32ce6;background:linear-gradient(0deg,rgba(211,44,230,.15),transparent)}
 .r-red{border-bottom:3px solid #eb4b4b;background:linear-gradient(0deg,rgba(235,75,75,.2),transparent)}
 .r-gold{border-bottom:3px solid #ffd700;background:linear-gradient(0deg,rgba(255,215,0,.25),transparent)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.nav{position:fixed;bottom:10px;left:12px;right:12px;background:#1c1f26;border-radius:20px;display:flex;justify-content:space-around;padding:8px;border:1px solid #2a2e37}
-.n-btn{background:none;border:none;color:#7a828e;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 12px;border-radius:12px}
+.inv-btns{display:flex;gap:5px;margin-top:8px}
+.sell-b{background:#2a303c;color:#4cd964;border:none;padding:6px;border-radius:8px;font-size:11px;font-weight:700;flex:1}
+.out-b{background:#0088cc;color:#fff;border:none;padding:6px;border-radius:8px;font-size:11px;font-weight:700;flex:1}
+.nav{position:fixed;bottom:10px;left:10px;right:10px;background:#1c1f26;border-radius:20px;display:flex;justify-content:space-around;padding:8px 4px;border:1px solid #2a2e37;z-index:90}
+.n-btn{background:none;border:none;color:#7a828e;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 8px;border-radius:12px}
 .n-btn.act{background:#2c303a;color:#fff}
 </style>
 </head>
 <body>
 <div class="card"><div class="prof"><div class="ava">👤</div><div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP</div></div><div class="lvl" id="lvl">LVL 1</div></div></div>
+
 <div id="home" class="sec act">
   <button class="blue-btn" onclick="document.getElementById('payModal').style.display='flex'">Tanga sotib olish</button>
-  <div class="task"><div><b>Steam hisobni ulang</b></div><button class="t-btn" onclick="doTask(this,400)">+400 🪙</button></div>
+  <div class="task"><div><b>Steam Trade URL</b><div style="font-size:11px;color:#7a828e" id="urlStatus">Kiritilmagan</div></div><button class="t-btn" onclick="setUrl()">Kiritish</button></div>
   <div class="task"><div><b>Kunlik bonus</b></div><button class="t-btn" onclick="doTask(this,230)">+230 🪙</button></div>
   <div class="task"><div><b>Kanalga obuna</b></div><button class="t-btn" onclick="doTask(this,250)">+250 🪙</button></div>
 </div>
+
 <div id="cases" class="sec">
   <h3 id="cTitle">📦 Armeiskiy Keys</h3>
   <div class="r-box"><div class="ptr"></div><div class="tape" id="tape"></div></div>
@@ -53,8 +58,11 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
     <div class="card" style="text-align:center" onclick="selCase('👑 Dragon',50000,50)">👑 Dragon<br><b style="color:#ffaa00">50 000 🪙</b></div>
   </div>
 </div>
+
 <div id="games" class="sec"><div class="card" style="text-align:center"><h3>⚡ X2 Upgrade (45%)</h3><br><button class="blue-btn" onclick="upg(500)">500 🪙 tikish</button><button class="blue-btn" onclick="upg(2000)">2 000 🪙 tikish</button><div id="uRes" style="font-weight:700"></div></div></div>
 <div id="shop" class="sec"><div class="grid" id="shopGrid"></div></div>
+<div id="inv" class="sec"><h3 style="margin-bottom:10px">🎒 Mening Inventarim</h3><div class="grid" id="invGrid"></div></div>
+
 <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
   <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:350px;text-align:center">
     <h3>💳 Tanga sotib olish</h3><br>
@@ -64,19 +72,36 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
     <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e">Yopish</button>
   </div>
 </div>
+
 <div class="nav">
   <button class="n-btn act" onclick="tab('home',this)">🏠<br>Asosiy</button>
   <button class="n-btn" onclick="tab('cases',this)">📦<br>Keyslar</button>
   <button class="n-btn" onclick="tab('games',this)">🎮<br>O'yinlar</button>
-  <button class="n-btn" onclick="tab('shop',this)">📋<br>Magazin</button>
+  <button class="n-btn" onclick="tab('shop',this)">🛒<br>Magazin</button>
+  <button class="n-btn" onclick="tab('inv',this)">🎒<br>Inventar</button>
 </div>
+
 <script>
 const tg=window.Telegram.WebApp;tg.ready();tg.expand();
-let bal=3707,xp=459,cP=1000,cM=1;
-function upd(v,x=0){bal+=v;xp+=x;document.getElementById('bal').innerText=bal.toLocaleString();document.getElementById('lvl').innerText='LVL '+(Math.floor(xp/500)+1);document.getElementById('xpTxt').innerText=xp+' XP';}
-function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');}
+const BOT_TOKEN="8782699239:AAH5J8pB52rP90F6b1m-S2x9_K3L8vW7nQ"; 
+let bal=Number(localStorage.getItem('cs_b'))||3707,xp=Number(localStorage.getItem('cs_x'))||459,cP=1000,cM=1;
+let myInv=JSON.parse(localStorage.getItem('cs_inv')||'[]');
+let tradeUrl=localStorage.getItem('cs_url')||'';
+if(tradeUrl)document.getElementById('urlStatus').innerText='✅ Saqlangan';
+
+function upd(v,x=0){bal+=v;xp+=x;localStorage.setItem('cs_b',bal);localStorage.setItem('cs_x',xp);document.getElementById('bal').innerText=bal.toLocaleString();document.getElementById('lvl').innerText='LVL '+(Math.floor(xp/500)+1);document.getElementById('xpTxt').innerText=xp+' XP';}
+upd(0,0);
+
+function setUrl(){
+  let u=prompt("Steam Trade URL manzilingizni kiriting:",tradeUrl);
+  if(u&&u.includes("steamcommunity.com")){tradeUrl=u;localStorage.setItem('cs_url',u);document.getElementById('urlStatus').innerText='✅ Saqlangan';alert("Trade URL saqlandi!");}
+  else if(u)alert("Noto'g'ri Steam Trade URL!");
+}
+
+function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');if(id==='inv')renderInv();}
 function doTask(b,a){if(!b.classList.contains('done')){b.classList.add('done');b.innerText='✓ '+a;upd(a,100);}}
 function selCase(n,p,m){cP=p;cM=m;document.getElementById('cTitle').innerText=n;document.getElementById('spBtn').innerText='Keys ochish — '+p.toLocaleString()+' 🪙';fill();}
+
 const items=[
   {n:'P250 | Sand',v:400,p:2500,c:'r-blue',svg:'<svg viewBox="0 0 100 50"><path d="M20 15h50v12H45l-5 18H25l5-18H20z" fill="#4b69ff"/></svg>'},
   {n:'Glock | Water',v:800,p:15000,c:'r-pink',svg:'<svg viewBox="0 0 100 50"><path d="M18 14h55v14H42l-4 17H22l5-17H18z" fill="#00bcd4"/></svg>'},
@@ -84,13 +109,33 @@ const items=[
   {n:'AWP | Asiimov',v:3200,p:350000,c:'r-red',svg:'<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#ff9800"/></svg>'},
   {n:'★ Karambit',v:9000,p:2000000,c:'r-gold',svg:'<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/></svg>'}
 ];
-document.getElementById('shopGrid').innerHTML=items.map(x=>'<div class="card" style="text-align:center">'+x.svg+'<br><b style="font-size:12px">'+x.n+'</b><br><br><button class="t-btn" onclick="buy(\''+x.n+'\','+x.p+')">'+x.p.toLocaleString()+' 🪙</button></div>').join('');
+
+document.getElementById('shopGrid').innerHTML=items.map((x,idx)=>'<div class="card" style="text-align:center">'+x.svg+'<br><b style="font-size:12px">'+x.n+'</b><br><br><button class="t-btn" onclick="buy('+idx+')">'+x.p.toLocaleString()+' 🪙</button></div>').join('');
+
+function renderInv(){
+  const g=document.getElementById('invGrid');
+  if(!myInv.length){g.innerHTML='<p style="color:#7a828e;grid-column:1/-1;text-align:center;padding:20px">Inventaringiz bo\'sh. Keys oching yoki magazindan oling!</p>';return;}
+  g.innerHTML=myInv.map((item,i)=>'<div class="card" style="text-align:center">'+item.svg+'<br><b style="font-size:12px">'+item.n+'</b><div class="inv-btns"><button class="sell-b" onclick="sellSkin('+i+')">Sotish +'+item.v+'</button><button class="out-b" onclick="withdrawSkin('+i+')">Chiqarish</button></div></div>').join('');
+}
+
+function sellSkin(i){
+  let s=myInv.splice(i,1);localStorage.setItem('cs_inv',JSON.stringify(myInv));
+  upd(s.v,10);renderInv();
+}
+
+function withdrawSkin(i){
+  if(!tradeUrl){setUrl();if(!tradeUrl)return;}
+  let s=myInv.splice(i,1);localStorage.setItem('cs_inv',JSON.stringify(myInv));renderInv();
+  alert('✅ '+s.n+' chiqarishga yuborildi! Admin tez orada Trade orqali yuboradi.');
+}
+
 const tape=document.getElementById('tape');
-function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.v=v;d.dataset.n=x.n;tape.appendChild(d);}}
+function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let idx=Math.floor(Math.random()*items.length);let x=items[idx];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.idx=idx;d.dataset.v=v;tape.appendChild(d);}}
 fill();
-function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
+
+function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children;let x=items[Number(w.dataset.idx)];let val=Number(w.dataset.v);myInv.push({n:x.n,v:val,svg:x.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));document.getElementById('cRes').innerText='🎉 '+x.n+' Inventarga qo\'shildi!';document.getElementById('spBtn').disabled=false;},4100);},50);}
 function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
-function buy(n,p){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);alert(n+' sotib olindi!');}
+function buy(idx){let x=items[idx];if(bal<x.p)return alert('Mablag yetarli emas');upd(-x.p,200);myInv.push({n:x.n,v:Math.floor(x.p*0.7),svg:x.svg});localStorage.setItem('cs_inv',JSON.stringify(myInv));alert('✅ '+x.n+' Inventaringizga qo\'shildi!');}
 </script>
 </body>
 </html>
