@@ -108,17 +108,17 @@ const items=[
   {n:'AWP | Asiimov',v:3200,p:350000,c:'r-red',svg:'<svg viewBox="0 0 100 50"><path d="M2 24h25l8-8h30v-5h12v5h20v5H75l-10 12H55l6-12H35l-15 12H8l10-9H2z" fill="#ff9800"/></svg>'},
   {n:'★ Karambit',v:9000,p:2000000,c:'r-gold',svg:'<svg viewBox="0 0 100 50"><path d="M15 35c15 5 35 0 55-20 8-8 15-5 15 0-5 15-25 30-55 28-8 0-12 4-15 0z" fill="#ffd700"/></svg>'}
 ];
-
 document.getElementById('shopGrid').innerHTML=items.map(x=>`<div class="card" style="text-align:center">${x.svg}<br><b style="font-size:12px">${x.n}</b><br><br><button class="t-btn" onclick="buy('${x.n}',${x.p})">${x.p.toLocaleString()} 🪙</button></div>`).join('');
 
 const tape=document.getElementById('tape');
 function fill(){tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';for(let i=0;i<35;i++){let x=items[Math.floor(Math.random()*items.length)];let v=x.v*cM;let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML=x.svg+'<b>'+x.n+'</b><span style="color:#4cd964">'+v+'</span>';d.dataset.v=v;d.dataset.n=x.n;tape.appendChild(d);}}
 fill();
 
-function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children;let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
+function spin(){if(bal<cP)return alert('Mablag yetarli emas');upd(-cP,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children[25];let val=Number(w.dataset.v);upd(val,50);document.getElementById('cRes').innerText='🎉 Yutuq: '+w.dataset.n+' (+'+val+' 🪙)';document.getElementById('spBtn').disabled=false;},4100);},50);}
 function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
 function buy(n,p){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);alert(n+' sotib olindi!');}
 </script>
 </body>
 </html>
+
 
