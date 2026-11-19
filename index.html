@@ -8,24 +8,38 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif}
 body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
-.card{background:#16181d;border-radius:16px;padding:12px;margin-bottom:10px}
+.card{background:#16181d;border-radius:16px;padding:13px;margin-bottom:10px}
 .prof{display:flex;align-items:center;gap:12px}
 .ava{width:48px;height:48px;border-radius:50%;background:#0088cc;display:flex;align-items:center;justify-content:center;font-size:22px}
 .bal{font-size:24px;font-weight:800}
-.lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:auto}
-.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:12px}
+.lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:6px 12px;border-radius:12px;margin-left:auto;cursor:pointer;border:1px solid #355234}
+.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:12px;cursor:pointer}
 .task{background:#16181d;border-radius:14px;padding:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.t-btn{background:#0088cc;color:#fff;border:none;padding:7px 14px;border-radius:10px;font-weight:700;font-size:12px}
+.t-btn{background:#0088cc;color:#fff;border:none;padding:8px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
 .t-btn.done{background:#1f3324;color:#4cd964}
 .sec{display:none}.sec.act{display:block}
-.r-box{position:relative;height:110px;background:#16181d;border-radius:14px;overflow:hidden;margin:10px 0;border:1px solid #2a2e37}
+.xp-bar{height:8px;background:#262930;border-radius:6px;overflow:hidden;margin:8px 0}
+.xp-fill{height:100%;background:#8847ff;width:20%;transition:width .3s}
+.lvl-row{background:#16181d;border-radius:14px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.lvl-ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rew-btn{margin-left:auto;padding:6px 12px;border-radius:12px;font-size:12px;font-weight:700;border:none}
+.rew-open{background:#1f3324;color:#4cd964}
+.rew-lock{background:#22252c;color:#7a828e}
+.xp-tab{display:flex;background:#16181d;border-radius:12px;padding:4px;margin-bottom:10px}
+.xt-b{flex:1;background:none;border:none;color:#7a828e;padding:8px;border-radius:9px;font-size:12px;font-weight:700}
+.xt-b.act{background:#2c303a;color:#fff}
+.faq{background:#16181d;border-radius:12px;padding:12px;margin-bottom:6px;font-size:13px}
+.faq-a{display:none;color:#8a99b5;font-size:12px;margin-top:6px;line-height:1.4}
+.r-box{position:relative;height:120px;background:#16181d;border-radius:14px;overflow:hidden;margin:10px 0;border:1px solid #2a2e37}
 .ptr{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#0088cc;z-index:5}
 .tape{display:flex;height:100%;transition:transform 4s cubic-bezier(.1,.85,.2,1)}
-.s-item{min-width:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:11px;padding:4px;text-align:center}
-.r-blue{border-bottom:3px solid #4b69ff;background:linear-gradient(0deg,rgba(75,105,255,.15),transparent)}
-.r-pink{border-bottom:3px solid #d32ce6;background:linear-gradient(0deg,rgba(211,44,230,.15),transparent)}
-.r-red{border-bottom:3px solid #eb4b4b;background:linear-gradient(0deg,rgba(235,75,75,.2),transparent)}
-.r-gold{border-bottom:3px solid #ffd700;background:linear-gradient(0deg,rgba(255,215,0,.25),transparent)}
+.s-item{min-width:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:10px;padding:4px;text-align:center}
+.s-img{width:82px;height:60px;object-fit:contain;margin-bottom:3px}
+.m-img{width:95px;height:70px;object-fit:contain;margin-bottom:6px}
+.r-blue{border-bottom:3px solid #4b69ff;background:linear-gradient(0deg,rgba(75,105,255,.18),transparent)}
+.r-pink{border-bottom:3px solid #d32ce6;background:linear-gradient(0deg,rgba(211,44,230,.18),transparent)}
+.r-red{border-bottom:3px solid #eb4b4b;background:linear-gradient(0deg,rgba(235,75,75,.22),transparent)}
+.r-gold{border-bottom:3px solid #ffd700;background:linear-gradient(0deg,rgba(255,215,0,.28),transparent)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px}
 .mini-s{background:#16181d;border-radius:10px;padding:8px 4px;text-align:center;font-size:10px}
@@ -39,31 +53,44 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
 </style>
 </head>
 <body>
-<div class="card"><div class="prof"><div class="ava">👤</div><div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP</div></div><div class="lvl" id="lvl">LVL 1</div></div></div>
+<div class="card"><div class="prof"><div class="ava">👤</div><div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP</div></div><button class="lvl" id="lvl" onclick="openLvl()">LVL 1 ▸</button></div></div>
 
 <div id="home" class="sec act">
   <button class="blue-btn" onclick="document.getElementById('payModal').style.display='flex'">Tanga sotib olish</button>
   <div class="task"><div><b>Steam Trade URL</b><div style="font-size:11px;color:#7a828e" id="urlStatus">Kiritilmagan</div></div><button class="t-btn" onclick="setUrl()">Kiritish</button></div>
-  <div class="task"><div><b>Kunlik bonus</b></div><button class="t-btn" onclick="doTask(this,230)">+230 🪙</button></div>
-  <div class="task"><div><b>Kanalga obuna</b></div><button class="t-btn" onclick="doTask(this,250)">+250 🪙</button></div>
+  <div class="task"><div><b>Kunlik kirish bonusi</b><div style="font-size:11px;color:#7a828e" id="dailySub">+230 🪙 va +50 XP</div></div><button class="t-btn" id="dailyBtn" onclick="claimDaily()">Olish</button></div>
+  <div class="task"><div><b>Kanalga obuna</b><div style="font-size:11px;color:#7a828e">+250 🪙 va +100 XP</div></div><button class="t-btn" id="subBtn" onclick="claimSub()">Olish</button></div>
 </div>
 
+<div id="lvlPage" class="sec">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+    <button class="t-btn" style="background:#232730" onclick="tab('home',document.querySelector('.n-btn'))">← Orqaga</button>
+    <h3 id="lvlHead">Daraja 1</h3>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span>Keyingi darajagacha</span><b style="color:#8847ff" id="nextXp">41 XP</b></div>
+    <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+  </div>
+  <h4 style="margin:12px 0 8px">Asosiy darajalar</h4>
+  <div id="lvlRewards"></div>
+  <h4 style="margin:14px 0 8px">XP qanday olish mumkin</h4>
+  <div class="xp-tab">
+    <button class="xt-b act" onclick="showXpTab(0,this)">Faoliyat</button>
+    <button class="xt-b" onclick="showXpTab(1,this)">O'yin</button>
+    <button class="xt-b" onclick="showXpTab(2,this)">Ijtimoiy</button>
+  </div>
+  <div class="card" id="xpInfo" style="font-size:13px;line-height:2"></div>
+  <h4 style="margin:14px 0 8px">Ko'p so'raladigan savollar</h4>
+  <div class="faq" onclick="this.lastElementChild.style.display=this.lastElementChild.style.display==='block'?'none':'block'"><b>Eng ko'p XP nima beradi? ▾</b><div class="faq-a">Keyslar ochish, Apgreyd o'ynash va kunlik ketma-ket kirish eng ko'p XP beradi.</div></div>
+  <div class="faq" onclick="this.lastElementChild.style.display=this.lastElementChild.style.display==='block'?'none':'block'"><b>Darajamni yo'qotishim mumkinmi? ▾</b><div class="faq-a">Yo'q, yig'ilgan XP va ochilgan darajalar doimiy saqlanadi.</div></div>
+</div>
 <div id="cases" class="sec">
   <h3 id="cTitle">📦 Fracture Case</h3>
-  <div class="r-box"><div class="ptr"></div><div class="tape" id="tape">
-    <div class="s-item r-blue"><div style="font-size:26px">🔫</div><b>P250 | Sand</b><span style="color:#4cd964">250</span></div>
-    <div class="s-item r-pink"><div style="font-size:26px">🔫</div><b>Glock | Bunsen</b><span style="color:#4cd964">450</span></div>
-    <div class="s-item r-red"><div style="font-size:26px">💥</div><b>Desert Eagle</b><span style="color:#4cd964">1 200</span></div>
-    <div class="s-item r-blue"><div style="font-size:26px">🔫</div><b>P250 | Sand</b><span style="color:#4cd964">250</span></div>
-  </div></div>
+  <div class="r-box"><div class="ptr"></div><div class="tape" id="tape"></div></div>
   <button class="blue-btn" id="spBtn" onclick="spin()">Keys ochish — 500 🪙</button>
   <div id="cRes" style="text-align:center;font-weight:700;color:#4cd964;margin-bottom:10px"></div>
   <h4 style="font-size:12px;color:#7a828e;margin-bottom:6px">📦 Ushbu keys ichidagi skinlar:</h4>
-  <div class="grid3" id="caseDrops">
-    <div class="mini-s r-blue"><div style="font-size:22px">🔫</div><b>P250 | Sand</b><br><span style="color:#4cd964">250 🪙</span></div>
-    <div class="mini-s r-pink"><div style="font-size:22px">🔫</div><b>Glock | Bunsen</b><br><span style="color:#4cd964">450 🪙</span></div>
-    <div class="mini-s r-red"><div style="font-size:22px">💥</div><b>Desert Eagle</b><br><span style="color:#4cd964">1 200 🪙</span></div>
-  </div>
+  <div class="grid3" id="caseDrops"></div>
   <h4 style="font-size:12px;color:#7a828e;margin-bottom:6px">Boshqa keyslar:</h4>
   <div class="grid">
     <div class="c-card" onclick="sel(0)"><div style="font-size:24px">📦</div><b>Fracture Case</b><br><span style="color:#4cd964;font-size:12px">500 🪙</span></div>
@@ -76,55 +103,39 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
     <div class="c-card" onclick="sel(7)"><div style="font-size:24px">🔪</div><b>Knife Case</b><br><span style="color:#4cd964;font-size:12px">100 000 🪙</span></div>
   </div>
 </div>
+
 <div id="games" class="sec">
   <h3 style="text-align:center;margin-bottom:8px">⚡ Apgreyd</h3>
-  <div style="position:relative;width:190px;height:190px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center">
+  <div style="position:relative;width:185px;height:185px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
     <div id="upgRing" style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(#4cd964 0% 60%, #232730 60% 100%);padding:12px">
       <div style="width:100%;height:100%;background:#0b0c0e;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
-        <div id="upgPct" style="font-size:28px;font-weight:900;color:#4cd964">60.00%</div>
-        <div id="upgMult" style="font-size:15px;color:#8a99b5;font-weight:700">×1.33</div>
+        <div id="upgPct" style="font-size:26px;font-weight:900;color:#4cd964">60.00%</div>
+        <div id="upgMult" style="font-size:14px;color:#8a99b5;font-weight:700">×1.33</div>
       </div>
     </div>
     <div id="upgArrow" style="position:absolute;inset:-6px;transition:transform 3.5s cubic-bezier(0.15,0.85,0.25,1)">
       <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:14px solid #ff9900;margin:0 auto"></div>
     </div>
   </div>
-
-  <div class="grid" style="margin-bottom:12px">
-    <div class="card" style="text-align:center;border:1px solid #2a2e37">
-      <div style="font-size:28px;margin-bottom:4px">🪙</div>
-      <div style="font-size:12px;color:#7a828e">Tikilgan summa</div>
-      <b id="betShow" style="font-size:15px;color:#ffaa00">1 000 🪙</b>
-    </div>
-    <div class="card" style="text-align:center;border:1px solid #ffaa00">
-      <div style="font-size:28px;margin-bottom:4px">🏆</div>
-      <div style="font-size:12px;color:#7a828e">Yutuq maqsadi</div>
-      <b id="winShow" style="font-size:15px;color:#4cd964">1 330 🪙</b>
-    </div>
+  <div class="grid" style="margin-bottom:10px">
+    <div class="card" style="text-align:center"><div style="font-size:11px;color:#7a828e">Tikilgan</div><b id="betShow" style="color:#ffaa00">1 000 🪙</b></div>
+    <div class="card" style="text-align:center;border:1px solid #ffaa00"><div style="font-size:11px;color:#7a828e">Maqsad</div><b id="winShow" style="color:#4cd964">1 330 🪙</b></div>
   </div>
-
-  <div style="font-size:12px;color:#7a828e;margin-bottom:6px">Maqsadni tanlash:</div>
-  <div style="display:flex;gap:6px;margin-bottom:12px">
-    <button class="t-btn" style="flex:1;padding:8px 2px" onclick="setMult(1.33,60)">x1.33<br><span style="font-size:9px">60%</span></button>
-    <button class="t-btn" style="flex:1;padding:8px 2px;background:#232730" onclick="setMult(1.5,53)">x1.5<br><span style="font-size:9px">53%</span></button>
-    <button class="t-btn" style="flex:1;padding:8px 2px;background:#232730" onclick="setMult(2,40)">x2<br><span style="font-size:9px">40%</span></button>
-    <button class="t-btn" style="flex:1;padding:8px 2px;background:#232730" onclick="setMult(3,27)">x3<br><span style="font-size:9px">27%</span></button>
-    <button class="t-btn" style="flex:1;padding:8px 2px;background:#232730" onclick="setMult(5,16)">x5<br><span style="font-size:9px">16%</span></button>
+  <div style="display:flex;gap:5px;margin-bottom:10px">
+    <button class="t-btn" style="flex:1;padding:7px 2px" onclick="setMult(1.33,60)">x1.33<br><span style="font-size:9px">60%</span></button>
+    <button class="t-btn" style="flex:1;padding:7px 2px;background:#232730" onclick="setMult(1.5,53)">x1.5<br><span style="font-size:9px">53%</span></button>
+    <button class="t-btn" style="flex:1;padding:7px 2px;background:#232730" onclick="setMult(2,40)">x2<br><span style="font-size:9px">40%</span></button>
+    <button class="t-btn" style="flex:1;padding:7px 2px;background:#232730" onclick="setMult(3,27)">x3<br><span style="font-size:9px">27%</span></button>
+    <button class="t-btn" style="flex:1;padding:7px 2px;background:#232730" onclick="setMult(5,16)">x5<br><span style="font-size:9px">16%</span></button>
   </div>
-
   <div class="card">
-    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px">
-      <span>Balansdan tanga qo'shish</span><b style="color:#ffaa00" id="betTop">1 000 🪙</b>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <input type="range" id="betRange" min="100" max="50000" step="100" value="1000" style="flex:1;accent-color:#fff" oninput="setBet(this.value)">
-      <button class="t-btn" style="background:#2a303c" onclick="setBet(bal)">Hammasi</button>
-    </div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Tanga qo'shish</span><b style="color:#ffaa00" id="betTop">1 000 🪙</b></div>
+    <div style="display:flex;gap:8px;align-items:center"><input type="range" id="betRange" min="100" max="50000" step="100" value="1000" style="flex:1" oninput="setBet(this.value)"><button class="t-btn" style="background:#2a303c" onclick="setBet(bal)">Hammasi</button></div>
   </div>
-
-  <button id="upgBtn" onclick="runUpg()" style="background:#ffcc00;color:#000;border:none;width:100%;padding:15px;border-radius:14px;font-size:16px;font-weight:800">Yaxshilash</button>
-  <div id="uRes" style="text-align:center;font-weight:700;margin-top:10px"></div>
+  <button id="upgBtn" onclick="runUpg()" style="background:#ffcc00;color:#000;border:none;width:100%;padding:14px;border-radius:14px;font-size:16px;font-weight:800">Yaxshilash</button>
+  <div id="uRes" style="text-align:center;font-weight:700;margin-top:8px"></div>
 </div>
+
 <div id="shop" class="sec"><div class="grid" id="shopGrid"></div></div>
 <div id="inv" class="sec"><h3 style="margin-bottom:10px">🎒 Mening Inventarim</h3><div class="grid" id="invGrid"></div></div>
 
@@ -145,38 +156,101 @@ body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
   <button class="n-btn" onclick="tab('shop',this)">🛒<br>Magazin</button>
   <button class="n-btn" onclick="tab('inv',this)">🎒<br>Inventar</button>
 </div>
-
 <script>
 const tg=window.Telegram.WebApp;tg.ready();tg.expand();
 let bal=Number(localStorage.getItem('cs_b'))||3707,xp=Number(localStorage.getItem('cs_x'))||459,cIdx=0;
 let myInv=JSON.parse(localStorage.getItem('cs_inv')||'[]'),tradeUrl=localStorage.getItem('cs_url')||'';
 if(tradeUrl)document.getElementById('urlStatus').innerText='✅ Saqlangan';
 
-function upd(v,x=0){bal+=v;xp+=x;localStorage.setItem('cs_b',bal);localStorage.setItem('cs_x',xp);document.getElementById('bal').innerText=bal.toLocaleString();document.getElementById('lvl').innerText='LVL '+(Math.floor(xp/500)+1);document.getElementById('xpTxt').innerText=xp+' XP';}
+function upd(v,x=0){
+  bal+=v;xp+=x;localStorage.setItem('cs_b',bal);localStorage.setItem('cs_x',xp);
+  let lv=Math.floor(xp/250)+1,rem=(lv*250)-xp;
+  document.getElementById('bal').innerText=bal.toLocaleString();
+  document.getElementById('lvl').innerText='LVL '+lv+' ▸';
+  document.getElementById('xpTxt').innerText=xp.toLocaleString()+' XP';
+  document.getElementById('lvlHead').innerText='Daraja '+lv;
+  document.getElementById('nextXp').innerText=rem+' XP';
+  document.getElementById('xpFill').style.width=(((xp%250)/250)*100)+'%';
+}
 upd(0,0);
+
+function checkDaily(){
+  let last=Number(localStorage.getItem('cs_daily')||0);
+  if(Date.now()-last<86400000){
+    let b=document.getElementById('dailyBtn');b.classList.add('done');b.innerText='✓ Olindi';
+    document.getElementById('dailySub').innerText='Ertaga qayta kiring';
+  }
+}
+checkDaily();
+
+function claimDaily(){
+  let last=Number(localStorage.getItem('cs_daily')||0);
+  if(Date.now()-last<86400000)return alert('Bugungi bonusni olgansiz! Ertaga kiring.');
+  localStorage.setItem('cs_daily',Date.now());
+  upd(230,50);checkDaily();
+  alert('🎉 Kunlik kirish bonusi olindi: +230 🪙 va +50 XP!');
+}
+
+function claimSub(){
+  if(localStorage.getItem('cs_sub'))return alert('Bu vazifa bajarilgan!');
+  localStorage.setItem('cs_sub','1');
+  let b=document.getElementById('subBtn');b.classList.add('done');b.innerText='✓ Olindi';
+  upd(250,100);alert('🎉 +250 🪙 va +100 XP qo\'shildi!');
+}
+if(localStorage.getItem('cs_sub')){let b=document.getElementById('subBtn');b.classList.add('done');b.innerText='✓ Olindi';}
+
+const milestones=new Array(
+  {l:2,x:250,r:500,c:'#4cd964',i:'🌱'},{l:5,x:1000,r:3500,c:'#00aaff',i:'🍃'},
+  {l:10,x:2250,r:24500,c:'#ff5722',i:'🔥'},{l:20,x:4750,r:171500,c:'#ffcc00',i:'⚡'},
+  {l:50,x:12250,r:1200500,c:'#d32ce6',i:'👑'},{l:100,x:24750,r:8403500,c:'#ff9800',i:'💎'}
+);
+function openLvl(){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));
+  document.getElementById('lvlPage').classList.add('act');
+  let lv=Math.floor(xp/250)+1;
+  document.getElementById('lvlRewards').innerHTML=milestones.map(m=>{
+    let got=localStorage.getItem('rew_'+m.l);
+    let can=lv>=m.l&&!got;
+    return '<div class="lvl-row"><div class="lvl-ico" style="background:'+m.c+'33;color:'+m.c+'">'+m.i+'</div><div><b>Daraja '+m.l+'</b><div style="font-size:11px;color:#8847ff">'+m.x.toLocaleString()+' XP</div></div><button class="rew-btn '+(can?'rew-open':'rew-lock')+'" onclick="takeRew('+m.l+','+m.r+')">'+(got?'✓ Olindi':(can?m.r.toLocaleString()+' 🪙':'🔒 '+m.r.toLocaleString()+' 🪙'))+'</button></div>';
+  }).join('');
+  showXpTab(0,document.querySelector('.xt-b'));
+}
+function takeRew(l,r){
+  let lv=Math.floor(xp/250)+1;
+  if(lv<l)return alert('Avval Daraja '+l+' ga yeting!');
+  if(localStorage.getItem('rew_'+l))return;
+  localStorage.setItem('rew_'+l,'1');upd(r,0);openLvl();alert('🎉 Daraja mukofoti olindi: +'+r.toLocaleString()+' 🪙!');
+}
+const xpTexts=new Array(
+  '• Kunlik kirish: <b style="color:#8847ff">+50 XP</b><br>• 7 kunlik ketma-ketlik: <b style="color:#8847ff">+200 XP</b><br>• 25K tanga depozit: <b style="color:#8847ff">+5 XP</b><br>• 50K tanga depozit: <b style="color:#8847ff">+10 XP</b>',
+  '• Keys ochish: <b style="color:#8847ff">+100 XP</b><br>• Apgreyd o\'ynash: <b style="color:#8847ff">+50 XP</b><br>• Magazindan skin olish: <b style="color:#8847ff">+200 XP</b>',
+  '• Kanalga obuna: <b style="color:#8847ff">+100 XP</b><br>• Do\'stni taklif qilish: <b style="color:#8847ff">+150 XP</b>'
+);
+function showXpTab(i,el){document.querySelectorAll('.xt-b').forEach(b=>b.classList.remove('act'));el.classList.add('act');document.getElementById('xpInfo').innerHTML=xpTexts.at(i);}
+
 function setUrl(){let u=prompt("Steam Trade URL:",tradeUrl);if(u&&u.includes("steamcommunity.com")){tradeUrl=u;localStorage.setItem('cs_url',u);document.getElementById('urlStatus').innerText='✅ Saqlangan';}}
-function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');if(id==='inv')renderInv();}
-function doTask(b,a){if(!b.classList.contains('done')){b.classList.add('done');b.innerText='✓ '+a;upd(a,100);}}
+function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');if(el)el.classList.add('act');if(id==='inv')renderInv();}
 
 let uBet=1000,uMult=1.33,uPct=60,uDeg=0;
 function setMult(m,p){uMult=m;uPct=p;document.getElementById('upgPct').innerText=p.toFixed(2)+'%';document.getElementById('upgMult').innerText='×'+m;document.getElementById('upgRing').style.background='conic-gradient(#4cd964 0% '+p+'%, #232730 '+p+'% 100%)';setBet(uBet);}
 function setBet(v){uBet=Math.max(100,Number(v));document.getElementById('betRange').value=uBet;document.getElementById('betShow').innerText=uBet.toLocaleString()+' 🪙';document.getElementById('betTop').innerText=uBet.toLocaleString()+' 🪙';document.getElementById('winShow').innerText=Math.round(uBet*uMult).toLocaleString()+' 🪙';}
-function runUpg(){
-  if(bal<uBet)return alert('Mablag yetarli emas!');
-  const btn=document.getElementById('upgBtn');btn.disabled=true;document.getElementById('uRes').innerText='';
-  upd(-uBet,50);
-  let win=Math.random()*100<uPct;
-  let targetAngle=win?(Math.random()*(uPct*3.4)+5):(uPct*3.6+10+Math.random()*((100-uPct)*3.4));
-  uDeg+=1440+(targetAngle-(uDeg%360));
-  document.getElementById('upgArrow').style.transform='rotate('+uDeg+'deg)';
-  setTimeout(()=>{
-    if(win){let prize=Math.round(uBet*uMult);upd(prize,100);document.getElementById('uRes').innerText='🎉 APGREYD O\'XSHADI! +'+prize.toLocaleString()+' 🪙';document.getElementById('uRes').style.color='#4cd964';}
-    else{document.getElementById('uRes').innerText='💥 KUYDI! Omadingizni yana sinab ko\'ring';document.getElementById('uRes').style.color='#eb4b4b';}
-    btn.disabled=false;
-  },3600);
-}
+function runUpg(){if(bal<uBet)return alert('Mablag yetarli emas!');const btn=document.getElementById('upgBtn');btn.disabled=true;document.getElementById('uRes').innerText='';upd(-uBet,50);let win=Math.random()*100<uPct;let ang=win?(Math.random()*(uPct*3.4)+5):(uPct*3.6+10+Math.random()*((100-uPct)*3.4));uDeg+=1440+(ang-(uDeg%360));document.getElementById('upgArrow').style.transform='rotate('+uDeg+'deg)';setTimeout(()=>{if(win){let pr=Math.round(uBet*uMult);upd(pr,100);document.getElementById('uRes').innerText='🎉 APGREYD O\'XSHADI! +'+pr.toLocaleString()+' 🪙';document.getElementById('uRes').style.color='#4cd964';}else{document.getElementById('uRes').innerText='💥 KUYDI!';document.getElementById('uRes').style.color='#eb4b4b';}btn.disabled=false;},3600);}
 
-const shopDb=new Array({n:'P250 | Sand',p:2500,img:P250},{n:'AK-47 | Ice',p:35000,img:AK_ICE},{n:'AK-47 | Redline',p:75000,img:AK_RED},{n:'M4A1 | Printstream',p:150000,img:M4_TEM},{n:'AWP | Asiimov',p:350000,img:AWP_ASI},{n:'★ Karambit Lore',p:2000000,img:K_LORE});
+const U="https://githubusercontent.com";
+const P250=U+"weapon_p250_hy_ddpat_light_png.png",GLOCK=U+"weapon_glock_aq_glock_coils_light_png.png",DEAG=U+"weapon_deagle_aa_flames_light_png.png",AK_ICE=U+"weapon_ak47_gs_ak47_ice_coaled_light_png.png",AK_RED=U+"weapon_ak47_cu_ak47_cobra_light_png.png",M4_TEM=U+"weapon_m4a1_silencer_gs_m4a1s_printstream_light_png.png",AWP_ASI=U+"weapon_awp_cu_awp_asimov_light_png.png",AWP_DL=U+"weapon_awp_cu_medieval_dragon_awp_light_png.png",K_LORE=U+"weapon_knife_karambit_cu_karambit_lore_light_png.png",K_FADE=U+"weapon_knife_karambit_aa_fade_light_png.png",B_FADE=U+"weapon_knife_butterfly_aa_fade_light_png.png",M9_DOP=U+"weapon_knife_m9_bayonet_am_doppler_phase2_light_png.png";
+
+const db=new Array(
+  {n:'📦 Fracture Case',p:500,s:new Array({n:'P250 | Sand',v:250,c:'r-blue',img:P250},{n:'Glock | Bunsen',v:450,c:'r-pink',img:GLOCK},{n:'Deagle | Blaze',v:1200,c:'r-red',img:DEAG})},
+  {n:'🥉 Recoil Case',p:1000,s:new Array({n:'Glock | Coils',v:500,c:'r-blue',img:GLOCK},{n:'AK-47 | Ice',v:1100,c:'r-pink',img:AK_ICE},{n:'AK-47 | Redline',v:2800,c:'r-red',img:AK_RED})},
+  {n:'🥈 Revolution',p:2500,s:new Array({n:'AK-47 | Redline',v:1200,c:'r-pink',img:AK_RED},{n:'M4A1 Printstream',v:3000,c:'r-red',img:M4_TEM},{n:'★ Butterfly Fade',v:7500,c:'r-gold',img:B_FADE})},
+  {n:'🔷 Dreams Case',p:5000,s:new Array({n:'M4A1 Printstream',v:2500,c:'r-pink',img:M4_TEM},{n:'AWP | Asiimov',v:6000,c:'r-red',img:AWP_ASI},{n:'★ Butterfly Fade',v:15000,c:'r-gold',img:B_FADE})},
+  {n:'🔥 Kilowatt Case',p:10000,s:new Array({n:'Deagle | Blaze',v:5000,c:'r-pink',img:DEAG},{n:'AWP | Asiimov',v:12000,c:'r-red',img:AWP_ASI},{n:'★ M9 Doppler',v:28000,c:'r-gold',img:M9_DOP})},
+  {n:'🔮 Bravo Case',p:20000,s:new Array({n:'AK-47 | Redline',v:10000,c:'r-pink',img:AK_RED},{n:'AWP Dragon Lore',v:25000,c:'r-red',img:AWP_DL},{n:'★ Karambit Fade',v:55000,c:'r-gold',img:K_FADE})},
+  {n:'👑 Cobblestone',p:50000,s:new Array({n:'M4A1 Printstream',v:25000,c:'r-pink',img:M4_TEM},{n:'AWP Dragon Lore',v:65000,c:'r-red',img:AWP_DL},{n:'★ Karambit Lore',v:130000,c:'r-gold',img:K_LORE})},
+  {n:'🔪 Knife Case',p:100000,s:new Array({n:'★ Butterfly Fade',v:45000,c:'r-gold',img:B_FADE},{n:'★ M9 Doppler',v:110000,c:'r-gold',img:M9_DOP},{n:'★ Karambit Lore',v:250000,c:'r-gold',img:K_LORE})}
+);
+
+const shopDb=new Array({n:'P250 | Sand',p:2500,img:P250},{n:'AK-47 | Ice',p:35000,img:AK_ICE},{n:'AK-47 | Redline',p:75000,img:AK_RED},{n:'M4A1 Printstream',p:150000,img:M4_TEM},{n:'AWP | Asiimov',p:350000,img:AWP_ASI},{n:'★ Karambit Lore',p:2000000,img:K_LORE});
 document.getElementById('shopGrid').innerHTML=shopDb.map((x,i)=>'<div class="card" style="text-align:center"><img class="m-img" src="'+x.img+'"><br><b style="font-size:12px">'+x.n+'</b><br><br><button class="t-btn" onclick="buy('+i+')">'+x.p.toLocaleString()+' 🪙</button></div>').join('');
 function sel(i){cIdx=i;let c=db.at(i);window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cTitle').innerText=c.n;document.getElementById('spBtn').innerText='Keys ochish — '+c.p.toLocaleString()+' 🪙';document.getElementById('cRes').innerText='';fill();}
 const tape=document.getElementById('tape');
