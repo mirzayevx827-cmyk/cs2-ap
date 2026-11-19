@@ -1,251 +1,153 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS2 Skinlar & Keyslar</title>
-    <script src="https://telegram.org"></script>
-    <style>
-        body {
-            background-color: #0f1219;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 15px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1a1f2c;
-            padding: 12px 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #2a3245;
-        }
-        .balance {
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 12px;
-            background: #1a1f2c;
-            border: none;
-            color: #8a94a6;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .tab-btn.active {
-            background: #2b5278;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(43, 82, 120, 0.4);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        /* CS2 Skin va Keys kartochkasi dizayni */
-        .card {
-            background: linear-gradient(145deg, #1c2230, #131722);
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #2a3245;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .card:active {
-            transform: scale(0.96);
-        }
-        /* CS2 Noyoblik ranglari (pastki chiziq va yorug'lik) */
-        .rarity-covert { border-bottom: 4px solid #eb4b4b; box-shadow: inset 0 -15px 25px -15px rgba(235, 75, 75, 0.5); }
-        .rarity-classified { border-bottom: 4px solid #d32ce6; box-shadow: inset 0 -15px 25px -15px rgba(211, 44, 230, 0.5); }
-        .rarity-restricted { border-bottom: 4px solid #8847ff; box-shadow: inset 0 -15px 25px -15px rgba(136, 71, 255, 0.5); }
-        .rarity-milspec { border-bottom: 4px solid #4b69ff; box-shadow: inset 0 -15px 25px -15px rgba(75, 105, 255, 0.5); }
-
-        .card img {
-            width: 100%;
-            height: 95px;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 10px rgba(0,0,0,0.7));
-            margin-bottom: 8px;
-        }
-        .weapon-name {
-            font-size: 11px;
-            color: #8a94a6;
-            text-transform: uppercase;
-        }
-        .skin-name {
-            font-size: 13px;
-            font-weight: bold;
-            margin: 3px 0 8px 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .price-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 12px;
-            width: 100%;
-        }
-        /* Keys ichini ko'rish oynasi (Modal) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 13, 20, 0.95);
-            z-index: 100;
-            padding: 15px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .close-btn {
-            background: #eb4b4b;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SHOT CS2</title>
+<script src="https://telegram.org"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif}
+body{background:#0b0c0e;color:#fff;padding:12px 12px 85px}
+.card{background:#16181d;border-radius:16px;padding:12px;margin-bottom:10px}
+.prof{display:flex;align-items:center;gap:12px}
+.ava{width:48px;height:48px;border-radius:50%;background:#0088cc;display:flex;align-items:center;justify-content:center;font-size:22px}
+.bal{font-size:24px;font-weight:800}
+.lvl{background:#233322;color:#4cd964;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:auto}
+.blue-btn{background:#0088cc;color:#fff;border:none;width:100%;padding:14px;border-radius:14px;font-size:15px;font-weight:700;margin-bottom:12px}
+.task{background:#16181d;border-radius:14px;padding:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.t-btn{background:#0088cc;color:#fff;border:none;padding:7px 14px;border-radius:10px;font-weight:700;font-size:12px}
+.t-btn.done{background:#1f3324;color:#4cd964}
+.sec{display:none}.sec.act{display:block}
+.r-box{position:relative;height:110px;background:#16181d;border-radius:14px;overflow:hidden;margin:10px 0;border:1px solid #2a2e37}
+.ptr{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#0088cc;z-index:5}
+.tape{display:flex;height:100%;transition:transform 4s cubic-bezier(.1,.85,.2,1)}
+.s-item{min-width:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #222;font-size:11px;padding:4px;text-align:center}
+.r-blue{border-bottom:3px solid #4b69ff;background:linear-gradient(0deg,rgba(75,105,255,.15),transparent)}
+.r-pink{border-bottom:3px solid #d32ce6;background:linear-gradient(0deg,rgba(211,44,230,.15),transparent)}
+.r-red{border-bottom:3px solid #eb4b4b;background:linear-gradient(0deg,rgba(235,75,75,.2),transparent)}
+.r-gold{border-bottom:3px solid #ffd700;background:linear-gradient(0deg,rgba(255,215,0,.25),transparent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px}
+.mini-s{background:#16181d;border-radius:10px;padding:8px 4px;text-align:center;font-size:10px}
+.c-card{background:#16181d;border-radius:14px;padding:12px;text-align:center;border:1px solid #2a2e37}
+.inv-btns{display:flex;gap:5px;margin-top:8px}
+.sell-b{background:#2a303c;color:#4cd964;border:none;padding:6px;border-radius:8px;font-size:11px;font-weight:700;flex:1}
+.out-b{background:#0088cc;color:#fff;border:none;padding:6px;border-radius:8px;font-size:11px;font-weight:700;flex:1}
+.nav{position:fixed;bottom:10px;left:10px;right:10px;background:#1c1f26;border-radius:20px;display:flex;justify-content:space-around;padding:8px 4px;border:1px solid #2a2e37;z-index:90}
+.n-btn{background:none;border:none;color:#7a828e;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 8px;border-radius:12px}
+.n-btn.act{background:#2c303a;color:#fff}
+</style>
 </head>
 <body>
+<div class="card"><div class="prof"><div class="ava">👤</div><div><div class="bal"><span id="bal">3 707</span> 🪙</div><div style="font-size:12px;color:#7a828e" id="xpTxt">459 XP</div></div><div class="lvl" id="lvl">LVL 1</div></div></div>
 
-    <div class="header">
-        <div>CS2 SKIN BOT</div>
-        <div class="balance">💰 <span id="user-balance">5000</span> tanga</div>
-    </div>
+<div id="home" class="sec act">
+  <button class="blue-btn" onclick="document.getElementById('payModal').style.display='flex'">Tanga sotib olish</button>
+  <div class="task"><div><b>Steam Trade URL</b><div style="font-size:11px;color:#7a828e" id="urlStatus">Kiritilmagan</div></div><button class="t-btn" onclick="setUrl()">Kiritish</button></div>
+  <div class="task"><div><b>Kunlik bonus</b></div><button class="t-btn" onclick="doTask(this,230)">+230 🪙</button></div>
+  <div class="task"><div><b>Kanalga obuna</b></div><button class="t-btn" onclick="doTask(this,250)">+250 🪙</button></div>
+</div>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('cases', this)">📦 Keyslar</button>
-        <button class="tab-btn" onclick="switchTab('shop', this)">🛒 Magazin</button>
-    </div>
+<div id="cases" class="sec">
+  <h3 id="cTitle">📦 Fracture Case</h3>
+  <div class="r-box"><div class="ptr"></div><div class="tape" id="tape">
+    <div class="s-item r-blue"><div style="font-size:26px">🔫</div><b>P250 | Sand</b><span style="color:#4cd964">250</span></div>
+    <div class="s-item r-pink"><div style="font-size:26px">🔫</div><b>Glock | Bunsen</b><span style="color:#4cd964">450</span></div>
+    <div class="s-item r-red"><div style="font-size:26px">💥</div><b>Desert Eagle</b><span style="color:#4cd964">1 200</span></div>
+    <div class="s-item r-blue"><div style="font-size:26px">🔫</div><b>P250 | Sand</b><span style="color:#4cd964">250</span></div>
+  </div></div>
+  <button class="blue-btn" id="spBtn" onclick="spin()">Keys ochish — 500 🪙</button>
+  <div id="cRes" style="text-align:center;font-weight:700;color:#4cd964;margin-bottom:10px"></div>
+  <h4 style="font-size:12px;color:#7a828e;margin-bottom:6px">📦 Ushbu keys ichidagi skinlar:</h4>
+  <div class="grid3" id="caseDrops">
+    <div class="mini-s r-blue"><div style="font-size:22px">🔫</div><b>P250 | Sand</b><br><span style="color:#4cd964">250 🪙</span></div>
+    <div class="mini-s r-pink"><div style="font-size:22px">🔫</div><b>Glock | Bunsen</b><br><span style="color:#4cd964">450 🪙</span></div>
+    <div class="mini-s r-red"><div style="font-size:22px">💥</div><b>Desert Eagle</b><br><span style="color:#4cd964">1 200 🪙</span></div>
+  </div>
+  <h4 style="font-size:12px;color:#7a828e;margin-bottom:6px">Boshqa keyslar:</h4>
+  <div class="grid">
+    <div class="c-card" onclick="sel(0)"><div style="font-size:24px">📦</div><b>Fracture Case</b><br><span style="color:#4cd964;font-size:12px">500 🪙</span></div>
+    <div class="c-card" onclick="sel(1)"><div style="font-size:24px">🥉</div><b>Recoil Case</b><br><span style="color:#4cd964;font-size:12px">1 000 🪙</span></div>
+    <div class="c-card" onclick="sel(2)"><div style="font-size:24px">🥈</div><b>Revolution</b><br><span style="color:#4cd964;font-size:12px">2 500 🪙</span></div>
+    <div class="c-card" onclick="sel(3)"><div style="font-size:24px">🔷</div><b>Dreams Case</b><br><span style="color:#4cd964;font-size:12px">5 000 🪙</span></div>
+    <div class="c-card" onclick="sel(4)"><div style="font-size:24px">🔥</div><b>Kilowatt Case</b><br><span style="color:#4cd964;font-size:12px">10 000 🪙</span></div>
+    <div class="c-card" onclick="sel(5)"><div style="font-size:24px">🔮</div><b>Bravo Case</b><br><span style="color:#4cd964;font-size:12px">20 000 🪙</span></div>
+    <div class="c-card" onclick="sel(6)"><div style="font-size:24px">👑</div><b>Cobblestone</b><br><span style="color:#4cd964;font-size:12px">50 000 🪙</span></div>
+    <div class="c-card" onclick="sel(7)"><div style="font-size:24px">🔪</div><b>Knife Case</b><br><span style="color:#4cd964;font-size:12px">100 000 🪙</span></div>
+  </div>
+</div>
+<div id="games" class="sec"><div class="card" style="text-align:center"><h3>⚡ X2 Upgrade (45%)</h3><br><button class="blue-btn" onclick="upg(500)">500 🪙 tikish</button><button class="blue-btn" onclick="upg(2000)">2 000 🪙 tikish</button><div id="uRes" style="font-weight:700"></div></div></div>
+<div id="shop" class="sec"><div class="grid">
+  <div class="card" style="text-align:center"><div style="font-size:28px">🔫</div><b>P250 | Sand</b><br><br><button class="t-btn" onclick="buy('P250 | Sand',2500,'🔫')">2 500 🪙</button></div>
+  <div class="card" style="text-align:center"><div style="font-size:28px">🔥</div><b>AK-47 | Redline</b><br><br><button class="t-btn" onclick="buy('AK-47 | Redline',75000,'🔥')">75 000 🪙</button></div>
+  <div class="card" style="text-align:center"><div style="font-size:28px">🎯</div><b>AWP | Asiimov</b><br><br><button class="t-btn" onclick="buy('AWP | Asiimov',350000,'🎯')">350 000 🪙</button></div>
+  <div class="card" style="text-align:center"><div style="font-size:28px">🔪</div><b>★ Karambit Lore</b><br><br><button class="t-btn" onclick="buy('★ Karambit Lore',2000000,'🔪')">2 000 000 🪙</button></div>
+</div></div>
+<div id="inv" class="sec"><h3 style="margin-bottom:10px">🎒 Mening Inventarim</h3><div class="grid" id="invGrid"></div></div>
 
-    <!-- KEYSLAR BO'LIMI -->
-    <div id="cases-section" class="grid"></div>
+<div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:15px">
+  <div style="background:#16181d;border:1px solid #0088cc;border-radius:18px;padding:20px;width:100%;max-width:350px;text-align:center">
+    <h3>💳 Tanga sotib olish</h3><br>
+    <div style="font-size:13px;line-height:1.6">• 10 000 so'm — <b>10 000 🪙</b><br><span style="color:#4cd964">• 25 000 so'm — <b>30 000 🪙</b></span><br>• 50 000 so'm — <b>65 000 🪙</b></div><br>
+    <div onclick="navigator.clipboard.writeText('9860020144030861');alert('Karta nusxalandi!')" style="background:#232730;padding:12px;border-radius:10px;font-weight:800;color:#00aaff;margin-bottom:12px">9860 0201 4403 0861 📋</div>
+    <button class="blue-btn" onclick="tg.close()">📸 Chekni botga yuborish</button>
+    <button onclick="document.getElementById('payModal').style.display='none'" style="background:none;border:none;color:#7a828e">Yopish</button>
+  </div>
+</div>
 
-    <!-- MAGAZIN BO'LIMI -->
-    <div id="shop-section" class="grid" style="display: none;"></div>
+<div class="nav">
+  <button class="n-btn act" onclick="tab('home',this)">🏠<br>Asosiy</button>
+  <button class="n-btn" onclick="tab('cases',this)">📦<br>Keyslar</button>
+  <button class="n-btn" onclick="tab('games',this)">🎮<br>O'yinlar</button>
+  <button class="n-btn" onclick="tab('shop',this)">🛒<br>Magazin</button>
+  <button class="n-btn" onclick="tab('inv',this)">🎒<br>Inventar</button>
+</div>
 
-    <!-- KEYS ICHINI OCHISH OYNASI -->
-    <div id="case-modal" class="modal">
-        <div class="modal-header">
-            <h3 id="modal-title" style="margin:0;">Keys nomi</h3>
-            <button class="close-btn" onclick="closeModal()">Yopish ✖</button>
-        </div>
-        <div style="text-align: center; margin-bottom: 20px;">
-            <img id="modal-case-img" src="" style="width: 140px; height: 110px; object-fit: contain;">
-            <br>
-            <button id="open-case-btn" class="price-btn" style="padding: 12px; font-size: 15px; margin-top: 10px;">Keysni ochish</button>
-        </div>
-        <h4 style="color: #8a94a6; margin-bottom: 10px;">Keys ichidagi skinlar:</h4>
-        <div id="modal-skins-grid" class="grid"></div>
-    </div>
+<script>
+const tg=window.Telegram.WebApp;tg.ready();tg.expand();
+let bal=Number(localStorage.getItem('cs_b'))||3707,xp=Number(localStorage.getItem('cs_x'))||459,cIdx=0;
+let myInv=JSON.parse(localStorage.getItem('cs_inv')||'[]'),tradeUrl=localStorage.getItem('cs_url')||'';
+if(tradeUrl)document.getElementById('urlStatus').innerText='✅ Saqlangan';
 
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
+function upd(v,x=0){bal+=v;xp+=x;localStorage.setItem('cs_b',bal);localStorage.setItem('cs_x',xp);document.getElementById('bal').innerText=bal.toLocaleString();document.getElementById('lvl').innerText='LVL '+(Math.floor(xp/500)+1);document.getElementById('xpTxt').innerText=xp+' XP';}
+upd(0,0);
+function setUrl(){let u=prompt("Steam Trade URL:",tradeUrl);if(u&&u.includes("steamcommunity.com")){tradeUrl=u;localStorage.setItem('cs_url',u);document.getElementById('urlStatus').innerText='✅ Saqlangan';}}
+function tab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));document.querySelectorAll('.n-btn').forEach(b=>b.classList.remove('act'));document.getElementById(id).classList.add('act');el.classList.add('act');if(id==='inv')renderInv();}
+function doTask(b,a){if(!b.classList.contains('done')){b.classList.add('done');b.innerText='✓ '+a;upd(a,100);}}
 
-        let balance = 5000;
+const db=new Array(
+  {n:'📦 Fracture Case',p:500,s:new Array({n:'P250 | Sand',v:250,c:'r-blue',i:'🔫'},{n:'Glock | Bunsen',v:450,c:'r-pink',i:'🔫'},{n:'Desert Eagle',v:1200,c:'r-red',i:'💥'})},
+  {n:'🥉 Recoil Case',p:1000,s:new Array({n:'USP-S | Ticket',v:500,c:'r-blue',i:'🔫'},{n:'AK-47 | Ice',v:1100,c:'r-pink',i:'🔥'},{n:'AWP | Chromatic',v:2800,c:'r-red',i:'🎯'})},
+  {n:'🥈 Revolution',p:2500,s:new Array({n:'MP9 | Feather',v:1200,c:'r-blue',i:'🔫'},{n:'M4A4 | Temukau',v:3000,c:'r-red',i:'🔥'},{n:'★ Gloves',v:7500,c:'r-gold',i:'🧤'})},
+  {n:'🔷 Dreams Case',p:5000,s:new Array({n:'MP7 | Abyssal',v:2500,c:'r-blue',i:'🔫'},{n:'AK-47 | Nightwish',v:6000,c:'r-red',i:'🔥'},{n:'★ Butterfly',v:15000,c:'r-gold',i:'🔪'})},
+  {n:'🔥 Kilowatt Case',p:10000,s:new Array({n:'Zeus | Olympus',v:5000,c:'r-pink',i:'⚡'},{n:'AK-47 | Inheritance',v:12000,c:'r-red',i:'🔥'},{n:'★ Kukri Knife',v:28000,c:'r-gold',i:'🔪'})},
+  {n:'🔮 Bravo Case',p:20000,s:new Array({n:'Deagle | Golden',v:10000,c:'r-pink',i:'💥'},{n:'AK-47 | Fire Serpent',v:25000,c:'r-red',i:'🔥'},{n:'★ Karambit Fade',v:55000,c:'r-gold',i:'🔪'})},
+  {n:'👑 Cobblestone',p:50000,s:new Array({n:'M4A1-S | Knight',v:25000,c:'r-pink',i:'🔥'},{n:'AWP | Dragon Lore',v:65000,c:'r-red',i:'🎯'},{n:'★ M9 Bayonet',v:130000,c:'r-gold',i:'🔪'})},
+  {n:'🔪 Knife Case',p:100000,s:new Array({n:'★ Gut Knife',v:45000,c:'r-gold',i:'🔪'},{n:'★ Talon Doppler',v:110000,c:'r-gold',i:'🔪'},{n:'★ Karambit Lore',v:250000,c:'r-gold',i:'🔪'})}
+);
 
-        // HAQIQIY CS2 SKINLAR BAZASI (Steam rasmlari bilan)
-        const skinsDB = [
-            {
-                id: 1,
-                weapon: "AK-47",
-                name: "Asiimov",
-                price: 4500,
-                rarity: "rarity-covert",
-                img: "https://steamstatic.com"
-            },
-            {
-                id: 2,
-                weapon: "AWP",
-                name: "Dragon Lore",
-                price: 150000,
-                rarity: "rarity-covert",
-                img: "https://steamstatic.com"
-            },
-            {
-                id: 3,
-                weapon: "M4A1-S",
-                name: "Hyper Beast",
-                price: 3200,
-                rarity: "rarity-covert",
-                img: "https://steamstatic.com"
-            },
-            {
-                id: 4,
-                weapon: "Desert Eagle",
-                name: "Printstream",
-                price: 5800,
-                rarity: "rarity-covert",
-                img: "https://steamstatic.com"
-            },
-            {
-                id: 5,
-                weapon: "USP-S",
-                name: "Kill Confirmed",
-                price: 4100,
-                rarity: "rarity-covert",
-                img: "https://steamstatic.com"
-            },
-            {
-                id: 6,
-                weapon: "Glock-18",
-                name: "Water Elemental",
-                price: 850,
-                rarity: "rarity-classified",
-                img: "https://steamstatic.com"
-            }
-        ];
-           // KEYSLAR BAZASI
-        const casesDB = [
-            {
-                id: 101,
-                name: "Kilowatt Case",
-                price: 500,
-                rarity: "rarity-restricted",
-                img: "https://steamstatic.com",
-                items:
-            },
-            {
-                id: 102,
-                name: "Revolution Case",
-                price: 1200,
-                rarity: "rarity-classified",
-                img: "https://steamstatic.com",
-                items:
-            }
-        ];
-        // Sahifani yuklash
-        function renderAll() {
-            const casesContainer = document.getElementById('cases-section');
-            const shopContainer = document.getElementById('shop-section');
+function sel(i){
+  cIdx=i;let c=db.at(i);window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('cTitle').innerText=c.n;
+  document.getElementById('spBtn').innerText='Keys ochish — '+c.p.toLocaleString()+' 🪙';
+  document.getElementById('cRes').innerText='';
+  document.getElementById('caseDrops').innerHTML=c.s.map(x=>'<div class="mini-s '+x.c+'"><div style="font-size:22px">'+x.i+'</div><b>'+x.n+'</b><br><span style="color:#4cd964">'+x.v.toLocaleString()+' 🪙</span></div>').join('');
+  fill();
+}
 
-            // Keyslarni chiqarish
-            casesContainer.innerHTML = casesDB.map(c => `
-                <div class="card ${c.rarity}" onclick="openCaseModal(${c.id})">
+const tape=document.getElementById('tape');
+function fill(){
+  let pool=db.at(cIdx).s;tape.innerHTML='';tape.style.transition='none';tape.style.transform='translateX(0)';
+  for(let i=0;i<35;i++){let x=pool.at(Math.floor(Math.random()*pool.length));let d=document.createElement('div');d.className='s-item '+x.c;d.innerHTML='<div style="font-size:26px">'+x.i+'</div><b>'+x.n+'</b><span style="color:#4cd964">'+x.v.toLocaleString()+'</span>';d.dataset.n=x.n;d.dataset.v=x.v;d.dataset.i=x.i;tape.appendChild(d);}
+}
+fill();
+
+function spin(){let c=db.at(cIdx);if(bal<c.p)return alert('Mablag yetarli emas');upd(-c.p,100);fill();document.getElementById('spBtn').disabled=true;setTimeout(()=>{let off=(25*105)-(tape.parentElement.offsetWidth/2)+52;tape.style.transition='transform 4s cubic-bezier(.1,.85,.2,1)';tape.style.transform='translateX(-'+off+'px)';setTimeout(()=>{let w=tape.children.item(25);let val=Number(w.dataset.v);myInv.push({n:w.dataset.n,v:val,i:w.dataset.i});localStorage.setItem('cs_inv',JSON.stringify(myInv));document.getElementById('cRes').innerText='🎉 '+w.dataset.n+' ('+val.toLocaleString()+' 🪙) Inventarga tushdi!';document.getElementById('spBtn').disabled=false;},4100);},50);}
+function renderInv(){const g=document.getElementById('invGrid');if(!myInv.length){g.innerHTML='<p style="color:#7a828e;grid-column:1/-1;text-align:center;padding:20px">Inventar bo\'sh!</p>';return;}g.innerHTML=myInv.map((item,i)=>'<div class="card" style="text-align:center"><div style="font-size:28px">'+item.i+'</div><b>'+item.n+'</b><div class="inv-btns"><button class="sell-b" onclick="sellSkin('+i+')">Sotish +'+item.v.toLocaleString()+'</button><button class="out-b" onclick="withdrawSkin('+i+')">Chiqarish</button></div></div>').join('');}
+function sellSkin(i){let s=myInv.splice(i,1).at(0);localStorage.setItem('cs_inv',JSON.stringify(myInv));upd(s.v,10);renderInv();}
+function withdrawSkin(i){if(!tradeUrl){setUrl();if(!tradeUrl)return;}let s=myInv.splice(i,1).at(0);localStorage.setItem('cs_inv',JSON.stringify(myInv));renderInv();alert('✅ '+s.n+' chiqarishga yuborildi!');}
+function upg(b){if(bal<b)return alert('Mablag yetarli emas');if(Math.random()<0.45){upd(b,100);document.getElementById('uRes').innerText='🎉 Yutdingiz: +'+b;}else{upd(-b,20);document.getElementById('uRes').innerText='💥 Kuydi: -'+b;}}
+function buy(n,p,i){if(bal<p)return alert('Mablag yetarli emas');upd(-p,200);myInv.push({n:n,v:Math.floor(p*0.7),i:i});localStorage.setItem('cs_inv',JSON.stringify(myInv));alert('✅ '+n+' Inventarga qo\'shildi!');}
+</script>
+</body>
+</html>
